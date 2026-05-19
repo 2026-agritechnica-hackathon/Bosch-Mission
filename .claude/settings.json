@@ -7,7 +7,7 @@
       }
     }
   },
-  "enabledPlugins": [
-    "seamos-everywhere@seamos-everywhere"
-  ]
+  "enabledPlugins": {
+    "seamos-everywhere@seamos-everywhere": true
+  }
 }
