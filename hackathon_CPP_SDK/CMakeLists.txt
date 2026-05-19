@@ -17,6 +17,29 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# ── SeamOS template: auto-extract SDK dependencies ──────────────────────
+# Only INSTALL_x86_64.tar.xz is committed (the ~200MB extracted lib/include
+# is gitignored). seamos-ide extracts it only during project Import, so a
+# build without Import would fail every FIND_PACKAGE below. Extract here at
+# configure time — runs identically on Linux (native cmake) and macOS
+# (cmake inside the build container). Idempotent.
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib/cmake")
+  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/INSTALL_x86_64.tar.xz")
+    message(STATUS "SeamOS: extracting SDK dependencies (INSTALL_x86_64.tar.xz)")
+    execute_process(
+      COMMAND ${CMAKE_COMMAND} -E tar xf
+              "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/INSTALL_x86_64.tar.xz"
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/dependencies"
+      RESULT_VARIABLE _seamos_untar_rc)
+    if(NOT _seamos_untar_rc EQUAL 0)
+      message(FATAL_ERROR "SeamOS: failed to extract SDK dependencies (rc=${_seamos_untar_rc})")
+    endif()
+  else()
+    message(FATAL_ERROR "SeamOS: dependencies/INSTALL_x86_64.tar.xz missing — re-clone the template")
+  endif()
+endif()
+# ────────────────────────────────────────────────────────────────────────
+
 
 FIND_PACKAGE(Boost 1.73 COMPONENTS log log_setup filesystem REQUIRED)
 add_definitions(-DBOOST_LOG_DYN_LINK)

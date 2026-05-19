@@ -58,16 +58,16 @@ bash scripts/seamos-bootstrap.sh
 
 1. regenerates `.seamos-context.json` (gitignored — embeds absolute paths
    that differ per machine),
-2. **extracts the C++ SDK runtime** from
-   `<app>_CPP_SDK/dependencies/INSTALL_x86_64.tar.xz` into `dependencies/`
-   (only the tarball is committed; the extracted `lib/`+`include/` are
-   gitignored). **Required before any C++ build** — CMake resolves all
-   `FIND_PACKAGE` calls from `dependencies/lib/cmake`,
+2. (optional) pre-extracts the C++ SDK runtime tarball — **not required**:
+   `<app>_CPP_SDK/CMakeLists.txt` now auto-extracts
+   `dependencies/INSTALL_x86_64.tar.xz` at cmake **configure time** if
+   `dependencies/lib/cmake` is absent, so the C++ build is self-contained,
 3. runs `npm install` inside `customui-src/` if needed.
 
-> Run this BEFORE building. seamos-ide also extracts the tarball during
-> project **Import**, but a build triggered before Import (or a raw
-> `cmake` build) will fail without this step.
+> The SDK dependency extraction is now automatic during the C++ build
+> (cmake configure step), on Linux (native) and macOS (Docker) alike.
+> Running `seamos-bootstrap.sh` is still recommended for the
+> `.seamos-context.json` regeneration and customui deps.
 
 ## 2. Open in seamos-ide
 
@@ -105,7 +105,7 @@ automatically. Verify with `/plugin` and `/plugin marketplace list`.
 | `LinkageError ... TestSimulator` / `exited with code 1` | active `java` is not 21 (or IDE launched with stale `JAVA_HOME`) | install JDK 21, set `JAVA_HOME`, **relaunch IDE from a fresh shell** (§0) |
 | "Docker를 사용할 수 없습니다" (macOS C++ build/run, or `fif` build any OS) | Docker not running, or amd64 emulation off on Apple Silicon | start Docker; enable Rosetta/amd64 (§0). Linux C++ build/run does NOT use Docker |
 | `cmake`/`g++` not found at full build (Linux) | native toolchain missing — Linux builds on the host, not Docker | install `build-essential cmake` (Debian/Ubuntu) |
-| `FindPackageHandleStandardArgs.cmake:230 ... Could NOT find <pkg>` (Boost / FCAL / NEVONEX-FCAL-PLATFORM / PahoMqttCpp / jsoncpp) | SDK dependencies not extracted — `<app>_CPP_SDK/dependencies/` has only the `.tar.xz` | run `bash scripts/seamos-bootstrap.sh` (extracts it), or manually: `tar xf <app>_CPP_SDK/dependencies/INSTALL_x86_64.tar.xz -C <app>_CPP_SDK/dependencies/`, then rebuild |
+| `FindPackageHandleStandardArgs.cmake:230 ... Could NOT find <pkg>` (Boost / FCAL / NEVONEX-FCAL-PLATFORM / PahoMqttCpp / jsoncpp) | SDK deps not extracted AND the CMakeLists auto-extract was bypassed (e.g. stale build/ cache, or SDK CMakeLists regenerated without the hook) | `rm -rf <app>_CPP_SDK/build` and rebuild (auto-extract reruns); or manually `cd <app>_CPP_SDK/dependencies && cmake -E tar xf INSTALL_x86_64.tar.xz` |
 | `127.0.0.1:6563` → 404 Not Found | CustomUI not built into `<app>/ui/` | `cd customui-src && npm run build` |
 | Plugin skills can't resolve project paths | `.seamos-context.json` missing (gitignored) | `bash scripts/seamos-bootstrap.sh` |
 | Plugin not auto-installing | workspace not trusted / offline | approve trust prompt; ensure network for first install |
