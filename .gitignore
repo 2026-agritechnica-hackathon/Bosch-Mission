@@ -1,11 +1,13 @@
 # ─────────────────────────────────────────────────────────────────────────
 # SeamOS hackathon template — .gitignore
 #
-# COMMIT  : FSP source, app user code, customui-src source, test libs,
-#           SDK runtime tarball, Claude/MCP config
-# IGNORE  : build outputs, runtime dirs, machine-specific state.
-#           seamos-ide regenerates .gen / .gen.tests/src / SDK src-gen on
-#           project Import, so those are NOT committed.
+# COMMIT  : FSP source, FD-generated source (.gen, src-gen — cmake does
+#           add_subdirectory(src-gen), so it must be present on clone),
+#           app user code, customui-src source, test libs, SDK tarball,
+#           Claude/MCP config
+# IGNORE  : build outputs (bin/target/build), runtime dirs, machine state.
+#           Generated *source* IS committed — do NOT rely on seamos-ide
+#           Import to regenerate it (participants build without Import).
 #
 # NOTE: .gitignore has no trailing/inline comments — every comment is on
 #       its own line. Keep it that way.
@@ -24,20 +26,20 @@ Thumbs.db
 # Zip dumps (incl. redundant hackathon_CPP_SDK.zip)
 *.zip
 
-# ── FD-generated layers (seamos-ide regenerates these on Import) ─────────
-# Do NOT blanket-ignore *.gen.tests/ — testlib JARs + Manifest/feature.config
-# there are required to run the simulator and are NOT regenerated.
-com.bosch.fsp.*.gen/
-com.bosch.fsp.*.gen.tests/src/
-com.bosch.fsp.*.gen.tests/data/
+# ── FD-generated layers ─────────────────────────────────────────────────
+# Generated SOURCE is committed (.gen java, .gen.tests src/data, SDK
+# src-gen) so `clone → build` works without an IDE Import step. Only the
+# compiled output (bin/target/logs) is ignored.
+com.bosch.fsp.*.gen/bin/
+com.bosch.fsp.*.gen/target/
 com.bosch.fsp.*.gen.tests/bin/
 com.bosch.fsp.*.gen.tests/target/
 com.bosch.fsp.*.gen.tests/logs/
 
 # ── C++ SDK ─────────────────────────────────────────────────────────────
-# Commit ONLY the runtime tarball + info.txt + CMakeLists; everything else
-# is rebuilt or re-extracted from INSTALL_x86_64.tar.xz on Import.
-*_CPP_SDK/src-gen/
+# Commit src-gen (cmake add_subdirectory) + CMakeLists + runtime tarball.
+# Ignore build output and the tarball-extracted lib/include (the bootstrap
+# script re-extracts those from INSTALL_x86_64.tar.xz).
 *_CPP_SDK/build/
 *_CPP_SDK/install/
 *_CPP_SDK/dependencies/lib/
