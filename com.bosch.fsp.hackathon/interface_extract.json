@@ -1,0 +1,274 @@
+{"interfaces": [
+  {
+    "Device Element": "GPSPlugin",
+    "Description": "Internal GPS sensor information.&#xD;&#xA;Data members&#xD;&#xA;[&#xD;&#xA;    Latitude  -> Default value -99.99&#xD;&#xA;    Longitude -> Default value -99.99&#xD;&#xA;] &#xD;&#xA;If no GPS signal is available, the data members will be holding \"null\" value.&#xD;&#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values.",
+    "Update Rate": "Cyclic",
+    "Device Class": "GPSPlugin",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "GPS"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "",
+    "Access": "Read",
+    "Standard": "NEVONEX",
+    "Machine Variant": "",
+    "ID": "1984",
+    "Name": "GPSSensorPosition"
+  },
+  {
+    "Device Element": "GPSPlugin",
+    "Description": "Internal GPS sensor information.&#xD;&#xA;&#xD;&#xA;Data members description:&#xD;&#xA;Latitude -> Latitude is the angular distance of a place North or South of the earth's equator, range:[-90, +90], unit: Degree&#xD;&#xA;&#xD;&#xA;Longitude -> Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&#xD;&#xA;&#xD;&#xA;Altitude -> How high or low the device/location is relation to the sea level, unit: meters&#xD;&#xA;&#xD;&#xA;TimeStamp -> Epoch time when the GPS data transmitted from satellite, unit: milliseconds&#xD;&#xA;&#xD;&#xA;HorizontalAccuracy -> Measure of how close a reported position is accurate on earth surface, unit: meters              &#xD;&#xA;&#xD;&#xA;VerticalAccuracy -> Measure of how close a reported position is accurate to sea level, unit: meters&#xD;&#xA;&#xD;&#xA;HorizontalDil -> Horizontal Dilution of precision, range:[1, infinity]&#xD;&#xA;&#xD;&#xA;PositionDil -> Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&#xD;&#xA;&#xD;&#xA;VerticalDil -> Vertical Dilution of Precision, range:[1, infinity]&#xD;&#xA;&#xD;&#xA;TimeDil -> Time Dilution of Precision, range:[1, infinity]&#xD;&#xA;&#xD;&#xA;Speed -> Speed of the GPS device, unit: km/hr&#xD;&#xA;&#xD;&#xA;Course -> Direction in which the device is heading to, range:[0, 359.99], unit: Degree&#xD;&#xA;&#xD;&#xA;NumberOfSatellites -> Number of satellites used in determining GPS fix&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Data members&#xD;&#xA;[&#xD;&#xA;    Latitude  -> Default value -99.99&#xD;&#xA;    Longitude -> Default value -99.99&#xD;&#xA;    Altitude  -> Default value -99.99&#xD;&#xA;    PacketTime (Epoch time of GPS data reception) -> Default value \"0\"&#xD;&#xA;    Horizontal Accuracy -> Default value -99.99&#xD;&#xA;    Vertical Accuracy-> Default value -99.99&#xD;&#xA;    Horizontal Dilution of Precision -> Default value -99.99&#xD;&#xA;    Position Dilution of Precision -> Default value -99.99&#xD;&#xA;    Vertical Dilution of Precision -> Default value -99.99&#xD;&#xA;    Time Dilution of Precision -> Default value -99.99&#xD;&#xA;    Speed -> Default value -99.99&#xD;&#xA;    Course -> Default value -99.99&#xD;&#xA;    Number of Satellites -> Default value 0&#xD;&#xA;]&#xD;&#xA;&#xD;&#xA;If no GPS signal is available, the data members will be holding \"null\" value. &#xD;&#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&#xD;&#xA;",
+    "Update Rate": "Cyclic",
+    "Device Class": "GPSPlugin",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "array"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "-",
+    "Access": "Read",
+    "Standard": "NEVONEX",
+    "Machine Variant": "",
+    "ID": "9288",
+    "Name": "internalGpsDetailedInfo"
+  },
+  {
+    "Device Element": "Implement",
+    "Description": "The number of working hours of a device element over its entire lifetime.",
+    "Update Rate": "Cyclic",
+    "Device Class": "Implement",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "DOUBLE"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "DDI215",
+    "Access": "Read",
+    "Standard": "ISOBUS",
+    "Machine Variant": "",
+    "ID": "350",
+    "Name": "LifetimeWorkingHours"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Accelerator Pedal Position 1 in Percent  Resolution: 0.4%/bit, 0 offset.",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xF003",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "215",
+    "Name": "AccpedPos1"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Ambient Air Temperature in &#xb0;C (SPN 171). Resolution: 0.03125 &#xb0;C/bit, -273&#xb0;C offset",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEF5",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "306",
+    "Name": "AmbAirt"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Brake Pedal Position. SPN : 521",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xF001",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "9336",
+    "Name": "BrkPedPos"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Amount of fuel consumed by engine per unit of time(SPN 183). Resolution: 0.05L/h per bit, 0 offset",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEF2",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "294",
+    "Name": "EngFuRatePerTime"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Engine Speed in rpm (SPN 190). Resolution: 0.125 rpm/bit, 0 offset",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xF004",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "224",
+    "Name": "EngSpd"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Engine Total Hours of Operation in hours (hr) (SPN 247). Resolution: 0.05 hr/bit, 0 offset",
+    "Update Rate": "Adhoc",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEE5",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "273",
+    "Name": "EngTotOperHrs"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Fuel Level in Percent (SPN 96). Resolution: 0.4%/bit, 0 offset",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEFC",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "314",
+    "Name": "FuLvlPer"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Fuel Level in Percent (SPN 38). Resolution: 0.4%/bit, 0 offset",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEFC",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "9173",
+    "Name": "FuLvlPer2"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Ground-Based Machine Speed in m/s (SPN 1859, cp. A.5). Resolution: 0.001 m/s/bit, 0 offset; upper byte resolution = 0.256 m/s/bit",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFE49",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "267",
+    "Name": "GndBasdMacSpd"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "(SPN: 1624) Speed of the vehicle registered by the tachograph.&#xA;Data Length: 2 bytes&#xA;Resolution: 1/256 km/h per bit, 0 offset&#xA;Data Range: 0 to 250.996 km/h",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFE6C",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "8744",
+    "Name": "TachoVehSpd"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Accumulated distance traveled by the vehicle during its operation.&#xA;NOTE - See SPN 245 for alternate resolution.&#xA;Data Length: 4 bytes&#xA;Resolution: 5 m/bit, 0 offset&#xA;Data Range: 0 to 21,055,406 km",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "LONG"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEC1",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "8746",
+    "Name": "TotalVehDist"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Total Vehicle Hours in hours (hr) (SPN 246). Resolution: 0.05 hr/bit, 0 offset",
+    "Update Rate": "Adhoc",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFEE7",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "276",
+    "Name": "TotVehHrs"
+  },
+  {
+    "Device Element": "ISOPGN",
+    "Description": "Wheel Based Machine Speed in m/s (SPN 1862, cp. A.8). Resolution: 0.001 m/s/bit, 0 offset",
+    "Update Rate": "Cyclic",
+    "Device Class": "ISOPGN",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "FLOAT"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "0xFE48",
+    "Access": "Read",
+    "Standard": "PGN",
+    "Machine Variant": "",
+    "ID": "263",
+    "Name": "WhlBasdMacSpd"
+  }
+]}

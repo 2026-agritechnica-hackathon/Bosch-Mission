@@ -1,0 +1,6 @@
+BRANCH :release/FCAL_NEVONEX_AGMO_BUILD_8.6_17_11_2025_openssl_fix
+BUILD :/banvm00154.apac.bosch.com:8080/job/FCAL_CPP_Linux-Binary-Build/job/custom/288/
+ARCHITECTURE :x86_64
+COMMIT_ID :5d7b7c3df445a8caeb847971c295f629ea06a98c
+BUILD STARTED BY  :Azeemuddin Mohammed (moz1kor)
+DURATION : 20 min

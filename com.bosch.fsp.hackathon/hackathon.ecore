@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="nevonex" nsURI="www.bosch.com/nevonex" nsPrefix="nevonex">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="version" value="8.4.18"/>
+  </eAnnotations>
+  <eSubpackages name="common" nsURI="com.bosch.nevonex.common" nsPrefix="common">
+    <eClassifiers xsi:type="ecore:EEnum" name="ProviderEnum">
+      <eLiterals name="GPSPluginProvider" literal="GPSPluginProvider"/>
+      <eLiterals name="ImplementProvider" value="1" literal="ImplementProvider"/>
+      <eLiterals name="ISOPGNProvider" value="2" literal="ISOPGNProvider"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ConnectionTypeEnum">
+      <eLiterals name="MQTT" literal="MQTT"/>
+      <eLiterals name="CAN" value="1" literal="CAN"/>
+      <eLiterals name="GPIO" value="2" literal="GPIO"/>
+      <eLiterals name="GPS" value="3" literal="GPS"/>
+      <eLiterals name="ISOBUS" value="4" literal="ISOBUS"/>
+      <eLiterals name="Serial" value="5" literal="Serial"/>
+      <eLiterals name="WIFI" value="6" literal="WIFI"/>
+      <eLiterals name="SATELLITE" value="7" literal="SATELLITE"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PlatformServicesEnum">
+      <eLiterals name="CLOUD_DOWNLOAD" literal="Cloud_Download"/>
+      <eLiterals name="CLOUD_UPLOAD" value="1" literal="Cloud_Upload"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="HMIServicesEnum">
+      <eLiterals name="CUSTOMUI" literal="com.bosch.nevonex.customui.impl.UIWebServiceProvider"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IAbsolutePosition" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="AbsolutePosition"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ITopicObject" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="TopicObject"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AbsolutePosition" eSuperTypes="#//common/IAbsolutePosition">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="altitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="longitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TopicObject" eSuperTypes="#//common/ITopicObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="0"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ICommonFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="exception" nsURI="com.bosch.nevonex.exception" nsPrefix="exception">
+    <eClassifiers xsi:type="ecore:EClass" name="IExceptionFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="fcb" nsURI="com.bosch.nevonex.fcb" nsPrefix="fcb">
+    <eClassifiers xsi:type="ecore:EEnum" name="SubscriberEnum">
+      <eLiterals name="FIL" literal="FIL"/>
+      <eLiterals name="FGF" value="1" literal="FGF"/>
+      <eLiterals name="ALL" value="2" literal="ALL"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IFCALController" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="FCALController"/>
+      </eAnnotations>
+      <eOperations name="setMachineUpdate">
+        <eParameters name="machine" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        <eParameters name="attribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="payload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="details" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eOperations>
+      <eOperations name="publish">
+        <eParameters name="interfaceKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="interfaceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="payloadValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="subscriber" eType="#//fcb/SubscriberEnum"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FCALController">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="FCALController"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IConnectionFactory" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectionFactory"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IPublishConnectionFactory" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PublishConnectionFactory"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ISubscribeConnectionFactory" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SubscribeConnectionFactory"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IFcbFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="fcal" nsURI="com.bosch.nevonex.fcal" nsPrefix="fcal">
+    <eClassifiers xsi:type="ecore:EClass" name="IBulkProcessor" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="BulkProcessor"/>
+      </eAnnotations>
+      <eOperations name="executeBulkOperations"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BulkProcessor">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="BulkProcessor"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IFcalFactory" abstract="true" interface="true"/>
+<eClassifiers xsi:type="ecore:EClass" name="INTERNAL_GPS_DETAILEDINFO_R" eSuperTypes="#//types/IArrayType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Latitude -> Latitude is the angular distance of a place North or South of the earth's equator, range:[-90, +90]&#xA;&#xA;Longitude -> Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180]&#xA;&#xA;Altitude -> How high or low the device/location is relation to the sea level&#xA;&#xA;TimeStamp -> Epoch time when the GPS data transmitted from satellite&#x9;&#xA;&#xA;HorizontalAccuracy -> Measure of how close a reported position is accurate on earth surface&#x9;&#xA;&#xA;VerticalAccuracy -> Measure of how close a reported position is accurate to sea level&#xA;&#xA;HorizontalDil -> Horizontal Dilution of precision, range:[1, infinity]&#xA;&#xA;PositionDil -> Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&#xA;&#xA;VerticalDil -> Vertical Dilution of Precision, range:[1, infinity]&#xA;&#xA;TimeDil -> Time Dilution of Precision, range:[1, infinity]&#xA;&#xA;Speed -> Speed of the GPS device&#xA;&#xA;Course -> Direction in which the device is heading to, range:[0, 359.99]&#xA;&#xA;NumberOfSatellites -> Number of satellites used in determining GPS fix"/>
+        <details key="arrayfeatures" value="latitude,longitude,altitude,timeStamp,horizontalAccuracy,verticalAccuracy,horizontalDil,positionDil,verticalDil,timeDil,speed,course,numberOfSatellites"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="longitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="altitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeStamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="horizontalAccuracy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalAccuracy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="horizontalDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="course" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+          defaultValueLiteral="0.0f">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSatellites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="access" value="Read"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="types" nsURI="com.bosch.nevonex.types" nsPrefix="types">
+    <eClassifiers xsi:type="ecore:EClass" name="IArrayType" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IPropertyChange" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ITypesFactory" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PropertyChange" eSuperTypes="#//types/IPropertyChange">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="listeners" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      <eOperations name="addPropertyChangeListener">
+        <eParameters name="_listener" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+      <eOperations name="removePropertyChangeListener">
+        <eParameters name="_listener" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+      <eOperations name="notifyPropertyChange">
+        <eParameters name="_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="_oldValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="_newValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IMachine"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IMachineProvider">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" eType="#//fcb/FCALController"/>
+      <eOperations name="createMachines">
+        <eParameters name="_stream" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+      <eOperations name="constructChildTypes">
+        <eParameters name="_parent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="_parentObj" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="_path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="initMachineProvider"/>
+      <eOperations name="getTopicElement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+        <eParameters name="_index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="stopMachineProvider"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="customui" nsURI="com.bosch.nevonex.customui" nsPrefix="customui">
+    <eClassifiers xsi:type="ecore:EEnum" name="PortEnum">
+      <eLiterals name="HTTP" value="8080" literal="HTTP"/>
+      <eLiterals name="WS" value="8081" literal="WS"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IAbstractWebsocketEndPoint" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AbstractWebsocketEndPoint"/>
+    <eClassifiers xsi:type="ecore:EClass" name="INevonexRoute" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NevonexRoute"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IUIWebServiceProvider" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UIWebServiceProvider"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ICustomuiFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="cloud" nsURI="com.bosch.nevonex.cloud" nsPrefix="cloud">
+    <eClassifiers xsi:type="ecore:EClass" name="ICloudDownload" instanceClassName="com.bosch.fsp.runtime.feature.ICloudDownload"
+        abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Cloud" eSuperTypes="#//cloud/ICloudDownload #//types/PropertyChange">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="Cloud_Download" value="true"/>
+      </eAnnotations>
+      <eOperations name="processDownloadMessage">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="It processes the message/file received from cloud."/>
+        </eAnnotations>
+        <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="initPlatformService" eExceptions="#//exception/MachineInitException"/>
+      <eOperations name="startPlatformService" eExceptions="#//exception/MachineInitException"/>
+      <eOperations name="stopPlatformService" eExceptions="#//exception/NevonexException"/>
+      <eOperations name="getFilePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Returns file path of latest downloaded file. (ICloudDownload contract)"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="uploadData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Uploads given data to Nevonex Cloud"/>
+        </eAnnotations>
+        <eParameters name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Data to be uploaded"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Priority of the upload 1. High, 2. Medium, 3.Low"/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="uploadData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Uploads given data to Nevonex Cloud using wifi or satellite based on the selected connection type."/>
+        </eAnnotations>
+        <eParameters name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Data to be uploaded"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Priority of the upload 1. High, 2. Medium, 3.Low"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="connectionType" eType="#//common/ConnectionTypeEnum">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Type of communication which should be used for uploading data. The allowable connection types are WIFI,SATELLITE. If this value is null WIFI is selected by default."/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="uploadFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Uploads given file to Nevonex Cloud"/>
+        </eAnnotations>
+        <eParameters name="file" eType="#//types/File">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="File which has to be uploaded"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Priority of the upload 1. High, 2. Medium, 3.Low"/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="uploadFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Uploads given file to Nevonex Cloud"/>
+        </eAnnotations>
+        <eParameters name="filePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Absolute Path of the file"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Priority of the upload 1. High, 2. Medium, 3.Low"/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="uploadFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Uploads given file to Nevonex Cloud"/>
+        </eAnnotations>
+        <eParameters name="file" eType="#//types/File">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="File which has to be uploaded"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Priority of the upload 1. High, 2. Medium, 3.Low"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="connectionType" eType="#//common/ConnectionTypeEnum">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Type of communication which should be used for uploading File. The allowable connection types are WIFI,SATELLITE. If this value is null WIFI is selected by default."/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="uploadFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Uploads given file to Nevonex Cloud"/>
+        </eAnnotations>
+        <eParameters name="filePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Absolute Path of the file"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Priority of the upload 1. High, 2. Medium, 3.Low"/>
+          </eAnnotations>
+        </eParameters>
+        <eParameters name="connectionType" eType="#//common/ConnectionTypeEnum">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Type of communication which should be used for uploading File. The allowable connection types are WIFI,SATELLITE. If this value is null WIFI is selected by default."/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="device2device" nsURI="com.bosch.nevonex.device2device" nsPrefix="device2device">
+    <eClassifiers xsi:type="ecore:EClass" name="IDeviceDownload" instanceClassName="com.bosch.fsp.runtime.feature.IDeviceDownload"
+        abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Device2Device" eSuperTypes="#//device2device/IDeviceDownload #//types/PropertyChange">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="Device2Device_Download" value="true"/>
+      </eAnnotations>
+      <eOperations name="processDownloadMessage">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="It processes the message/file received from Connected Device."/>
+        </eAnnotations>
+        <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="initPlatformService" eExceptions="#//exception/MachineInitException"/>
+      <eOperations name="startPlatformService" eExceptions="#//exception/MachineInitException"/>
+      <eOperations name="stopPlatformService" eExceptions="#//exception/NevonexException"/>
+      <eOperations name="sendCommand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Sends given command to the connected device"/>
+        </eAnnotations>
+        <eParameters name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Command which has to be sent to the connected device"/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isDeviceConnected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Checks whether device is connected to the Nevonex CCU. &#xA;Returns true if connected, false otherwise."/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="sendFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Sends file present at the given path to the connected device."/>
+        </eAnnotations>
+        <eParameters name="file" eType="#//types/File">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="File which has to be sent"/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+      <eOperations name="sendFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          eExceptions="#//exception/CloudBadRequestException #//exception/CloudUnAuthorizedException #//exception/CloudAccessDeniedException #//exception/CloudConnectionException #//exception/PlatformServiceException #//exception/FileNotFoundException #//exception/IOException">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Sends the give file to connected device."/>
+        </eAnnotations>
+        <eParameters name="filePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Absolute path of the file."/>
+          </eAnnotations>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="gpsplugin" nsURI="com.bosch.nevonex.gpsplugin" nsPrefix="gpsplugin">
+    <eClassifiers xsi:type="ecore:EClass" name="IGPSPlugin" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="containedIn" value="GPSPluginProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="gPSSensorPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/1984;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="internalGpsDetailedInfo" eType="#//fcal/INTERNAL_GPS_DETAILEDINFO_R">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/9288;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GPSPlugin" eSuperTypes="#//common/TopicObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="interfaceDetails" value="fek/1984;fek/9288;"/>
+        <details key="interfaceDetailsType" value="1984/GPS_TYPE/GPSSensorPosition;9288/ARRAY_TYPE/INTERNAL_GPS_DETAILEDINFO_R;"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IGPSPluginProvider" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="gPSPlugin" eType="#//gpsplugin/IGPSPlugin" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GPSPluginProvider">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IGpspluginFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="implement" nsURI="com.bosch.nevonex.implement" nsPrefix="implement">
+    <eClassifiers xsi:type="ecore:EClass" name="IImplement" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="containedIn" value="ImplementProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lifetimeWorkingHours" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/350;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Implement" eSuperTypes="#//common/TopicObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="interfaceDetails" value="fek/350;"/>
+        <details key="interfaceDetailsType" value="350/DOUBLE_TYPE/LifetimeWorkingHours;"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IImplementProvider" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="implement" eType="#//implement/IImplement" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ImplementProvider">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IImplementFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="isopgn" nsURI="com.bosch.nevonex.isopgn" nsPrefix="isopgn">
+    <eClassifiers xsi:type="ecore:EClass" name="IISOPGN" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="containedIn" value="ISOPGNProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="accpedPos1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/215;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ambAirt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/306;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="brkPedPos" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/9336;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="engFuRatePerTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/294;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="engSpd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/224;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="engTotOperHrs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/273;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fuLvlPer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/314;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fuLvlPer2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/9173;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="gndBasdMacSpd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/267;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="tachoVehSpd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/8744;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalVehDist" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/8746;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="totVehHrs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/276;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="whlBasdMacSpd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0.0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/263;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ISOPGN" eSuperTypes="#//common/TopicObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="interfaceDetails" value="fek/215;fek/306;fek/9336;fek/294;fek/224;fek/273;fek/314;fek/9173;fek/267;fek/8744;fek/8746;fek/276;fek/263;"/>
+        <details key="interfaceDetailsType" value="215/FLOAT_TYPE/AccpedPos1;306/FLOAT_TYPE/AmbAirt;9336/FLOAT_TYPE/BrkPedPos;294/FLOAT_TYPE/EngFuRatePerTime;224/FLOAT_TYPE/EngSpd;273/FLOAT_TYPE/EngTotOperHrs;314/FLOAT_TYPE/FuLvlPer;9173/FLOAT_TYPE/FuLvlPer2;267/FLOAT_TYPE/GndBasdMacSpd;8744/FLOAT_TYPE/TachoVehSpd;8746/LONG_TYPE/TotalVehDist;276/FLOAT_TYPE/TotVehHrs;263/FLOAT_TYPE/WhlBasdMacSpd;"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IISOPGNProvider" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="iSOPGN" eType="#//isopgn/IISOPGN" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ISOPGNProvider">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IIsopgnFactory" abstract="true" interface="true"/>
+  </eSubpackages>
+  <eSubpackages name="main" nsURI="com.bosch.nevonex.main" nsPrefix="main">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="Provider" value="GPSPlugin provider:gpsplugin,Implement provider:implement,ISOPGN provider:isopgn"/>
+      <details key="AppControllerName" value="MainController"/>
+      <details key="Timer" value="1000"/>
+      <details key="isCustomUI" value="true"/>
+      <details key="hasUserControls" value="false"/>
+      <details key="UDInputListeners" value=""/>
+      <details key="PlatformServices" value="Download,Upload Data,Upload File,Receive,Send Command,Send File"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="ApplicationMain">
+      <eOperations name="addListenersForUserDefinedControls">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="This method adds property change listeners for user defined widgets which are created using feature designer to this generated feature application."/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="initializeMachineProviders">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="This method initializes the machines which are required to run the feature with their corresponding dom providers."/>
+        </eAnnotations>
+        <eParameters name="provider" eType="#//main/MachineProvider"/>
+      </eOperations>
+      <eOperations name="addProcessTimer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="This method schedules the runnable controller class to be called in given particular interval of time."/>
+        </eAnnotations>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timerTriggered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MachineProvider" instanceClassName="com.bosch.fsp.runtime.feature.IMachineProvider"
+        abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PropertyChangeListener" instanceClassName="java.beans.PropertyChangeListener"
+        abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Runnable" instanceClassName="java.lang.Runnable"
+        abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ApplicationInputData">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="gPSPlugin" eType="#//main/GPSPlugin"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="implement" eType="#//main/Implement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="iSOPGN" eType="#//main/ISOPGN"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="platform_Service" eType="#//main/Platform_Service"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MainController" eSuperTypes="#//main/Runnable #//main/ApplicationInputData">
+      <eOperations name="run"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FeatureManagerListener"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IgnitionStateListener"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MachineConnectListener"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IController"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CloudDownloadListener"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Device2DeviceDownloadListener"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SampleGetService">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" eType="#//main/MainController"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SamplePostService">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" eType="#//main/MainController"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SamplePutService">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" eType="#//main/MainController"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SampleDeleteService">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" eType="#//main/MainController"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UIWebsocketEndPoint"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GPSPlugin"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Implement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ISOPGN"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Platform_Service"/>
+  </eSubpackages>
+</ecore:EPackage>

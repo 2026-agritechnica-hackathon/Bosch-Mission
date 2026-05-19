@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Feature>
+    
+  <Identity>
+        
+    <Brand> </Brand>
+        
+    <LegalEntity> </LegalEntity>
+        
+    <Company> </Company>
+        
+    <ProjectID> </ProjectID>
+        
+    <Name>hackathon</Name>
+        
+    <FeatureType> </FeatureType>
+        
+    <FeatureDate> </FeatureDate>
+        
+    <FeatureID> </FeatureID>
+        
+    <License> </License>
+        
+    <Description> </Description>
+        
+    <Author> </Author>
+        
+    <Version>
+            
+      <Major>1</Major>
+            
+      <Minor>0</Minor>
+            
+      <Patch>0</Patch>
+          
+    </Version>
+      
+  </Identity>
+    
+  <UI>
+        
+    <Type>CustomUI</Type>
+        
+    <Port>1456</Port>
+        
+    <Context>#!/app</Context>
+        
+    <QRScanner>false</QRScanner>
+        
+    <AndroidAppID> </AndroidAppID>
+        
+    <IOSAppID> </IOSAppID>
+      
+  </UI>
+    
+  <Dependencies>
+        
+    <Interfaces>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>GPSSensorPosition</Name>
+                
+        <Description>Internal GPS sensor information.&#13;Data members&#13;[&#13;    Latitude  -&gt; Default value -99.99&#13;    Longitude -&gt; Default value -99.99&#13;] &#13;If no GPS signal is available, the data members will be holding "null" value.&#13;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values.</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>1984</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>internalGpsDetailedInfo</Name>
+                
+        <Description>Internal GPS sensor information.&#13;&#13;Data members description:&#13;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth's equator, range:[-90, +90], unit: Degree&#13;&#13;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&#13;&#13;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&#13;&#13;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&#13;&#13;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &#13;&#13;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&#13;&#13;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&#13;&#13;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&#13;&#13;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&#13;&#13;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&#13;&#13;Speed -&gt; Speed of the GPS device, unit: km/hr&#13;&#13;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&#13;&#13;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&#13;&#13;&#13;&#13;&#13;Data members&#13;[&#13;    Latitude  -&gt; Default value -99.99&#13;    Longitude -&gt; Default value -99.99&#13;    Altitude  -&gt; Default value -99.99&#13;    PacketTime (Epoch time of GPS data reception) -&gt; Default value "0"&#13;    Horizontal Accuracy -&gt; Default value -99.99&#13;    Vertical Accuracy-&gt; Default value -99.99&#13;    Horizontal Dilution of Precision -&gt; Default value -99.99&#13;    Position Dilution of Precision -&gt; Default value -99.99&#13;    Vertical Dilution of Precision -&gt; Default value -99.99&#13;    Time Dilution of Precision -&gt; Default value -99.99&#13;    Speed -&gt; Default value -99.99&#13;    Course -&gt; Default value -99.99&#13;    Number of Satellites -&gt; Default value 0&#13;]&#13;&#13;If no GPS signal is available, the data members will be holding "null" value. &#13;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&#13;</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>9288</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>LifetimeWorkingHours</Name>
+                
+        <Description>The number of working hours of a device element over its entire lifetime.</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>350</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>AccpedPos1</Name>
+                
+        <Description>Accelerator Pedal Position 1 in Percent  Resolution: 0.4%/bit, 0 offset.</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>215</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>AmbAirt</Name>
+                
+        <Description>Ambient Air Temperature in °C (SPN 171). Resolution: 0.03125 °C/bit, -273°C offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>306</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>BrkPedPos</Name>
+                
+        <Description>Brake Pedal Position. SPN : 521</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>9336</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>EngFuRatePerTime</Name>
+                
+        <Description>Amount of fuel consumed by engine per unit of time(SPN 183). Resolution: 0.05L/h per bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>294</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>EngSpd</Name>
+                
+        <Description>Engine Speed in rpm (SPN 190). Resolution: 0.125 rpm/bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>224</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>EngTotOperHrs</Name>
+                
+        <Description>Engine Total Hours of Operation in hours (hr) (SPN 247). Resolution: 0.05 hr/bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>273</Id>
+                
+        <OperationMode value="1">Adhoc</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>FuLvlPer</Name>
+                
+        <Description>Fuel Level in Percent (SPN 96). Resolution: 0.4%/bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>314</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>FuLvlPer2</Name>
+                
+        <Description>Fuel Level in Percent (SPN 38). Resolution: 0.4%/bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>9173</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>GndBasdMacSpd</Name>
+                
+        <Description>Ground-Based Machine Speed in m/s (SPN 1859, cp. A.5). Resolution: 0.001 m/s/bit, 0 offset; upper byte resolution = 0.256 m/s/bit</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>267</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>TachoVehSpd</Name>
+                
+        <Description>(SPN: 1624) Speed of the vehicle registered by the tachograph.Data Length: 2 bytesResolution: 1/256 km/h per bit, 0 offsetData Range: 0 to 250.996 km/h</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>8744</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>TotalVehDist</Name>
+                
+        <Description>Accumulated distance traveled by the vehicle during its operation.NOTE - See SPN 245 for alternate resolution.Data Length: 4 bytesResolution: 5 m/bit, 0 offsetData Range: 0 to 21,055,406 km</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>8746</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>TotVehHrs</Name>
+                
+        <Description>Total Vehicle Hours in hours (hr) (SPN 246). Resolution: 0.05 hr/bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>276</Id>
+                
+        <OperationMode value="1">Adhoc</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>WhlBasdMacSpd</Name>
+                
+        <Description>Wheel Based Machine Speed in m/s (SPN 1862, cp. A.8). Resolution: 0.001 m/s/bit, 0 offset</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>263</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+          
+    </Interfaces>
+        
+    <Libraries>
+            
+      <Library>
+                
+        <Name> </Name>
+                
+        <Version> </Version>
+              
+      </Library>
+          
+    </Libraries>
+        
+    <Development_Environment>
+            
+      <FCAL_Runtime_Version>8.4.18</FCAL_Runtime_Version>
+            
+      <FD_Version>8.4</FD_Version>
+            
+      <Development_Tools>
+                
+        <Development_Tool>
+                    
+          <Name> </Name>
+                    
+          <Version> </Version>
+                    
+          <TargetCompiler> </TargetCompiler>
+                  
+        </Development_Tool>
+              
+      </Development_Tools>
+          
+    </Development_Environment>
+        
+    <External_Libraries>
+            
+      <External_Library>
+                
+        <Name> </Name>
+                
+        <Version>
+                    
+          <Major> </Major>
+                    
+          <Minor> </Minor>
+                    
+          <Patch> </Patch>
+                  
+        </Version>
+              
+      </External_Library>
+          
+    </External_Libraries>
+      
+  </Dependencies>
+    
+  <ContainerCharacteristics>
+        
+    <Name> </Name>
+        
+    <ContainerType> </ContainerType>
+        
+    <BasePackage> </BasePackage>
+        
+    <EntryPoint> </EntryPoint>
+        
+    <ExitPoint> </ExitPoint>
+        
+    <AutoStart> </AutoStart>
+        
+    <DataUpload_Support> </DataUpload_Support>
+        
+    <ExternalCloud_API_Support> </ExternalCloud_API_Support>
+        
+    <FGF_Integration_Support> </FGF_Integration_Support>
+        
+    <Version>
+            
+      <Major> </Major>
+            
+      <Minor> </Minor>
+            
+      <Patch> </Patch>
+          
+    </Version>
+      
+  </ContainerCharacteristics>
+    
+  <MachineStatus>
+        
+    <MachineState/>
+        
+    <MachineStateError/>
+      
+  </MachineStatus>
+    
+  <Installation>
+        
+    <Method>Docker</Method>
+        
+    <AutoInstall>true</AutoInstall>
+        
+    <Properties>
+            
+      <HasToBeBuilt>true</HasToBeBuilt>
+            
+      <DockerFile>Dockerfolder</DockerFile>
+            
+      <AutoRun>false</AutoRun>
+            
+      <ImageName> </ImageName>
+            
+      <FileSystemIn>/app/in/</FileSystemIn>
+            
+      <FileSystemOut>/app/out/</FileSystemOut>
+            
+      <Mount> </Mount>
+          
+    </Properties>
+      
+  </Installation>
+    
+  <Resource>
+        
+    <Cpu> </Cpu>
+        
+    <Memory> </Memory>
+        
+    <Space> </Space>
+        
+    <FolderType>M</FolderType>
+      
+  </Resource>
+  
+</Feature>

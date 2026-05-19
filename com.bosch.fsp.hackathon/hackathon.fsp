@@ -1,0 +1,3 @@
+GPSPluginProvider=com.bosch.nevonex.gpsplugin.impl.GPSPluginProvider
+ImplementProvider=com.bosch.nevonex.implement.impl.ImplementProvider
+ISOPGNProvider=com.bosch.nevonex.isopgn.impl.ISOPGNProvider

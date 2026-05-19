@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "seamos-everywhere": {
+      "source": {
+        "source": "github",
+        "repo": "AGMO-Inc/seamos-everywhere"
+      }
+    }
+  },
+  "enabledPlugins": [
+    "seamos-everywhere@seamos-everywhere"
+  ]
+}

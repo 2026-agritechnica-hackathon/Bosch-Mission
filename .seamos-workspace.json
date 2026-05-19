@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-05-19T15:53:20Z",
+  "scope": "project",
+  "ui": {
+    "defaultFramework": "react",
+    "activeSrcPath": "customui-src",
+    "react": {
+      "templateRepo": "https://github.com/AGMO-Inc/custom-ui-react-template",
+      "templateRef": "master"
+    }
+  },
+  "marketplace": {
+    "endpoint": "dev",
+    "endpointUrl": "https://dev.marketplace-api.seamos.io/mcp"
+  }
+}

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fcal:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fcal="www.bosch.com/fcal" featureName="hackathon" featureVersion="1.0.0" featureAutoRun="false" featureUIType="CustomUI" featurePort="1456" featurePlatformServices="Download,Upload Data,Upload File,Receive,Send Command,Send File" featureResFolderType="M">
+  <providers fname="GPSPlugin provider">
+    <features fname="GPSPlugin" machineID="5771">
+      <attributes attributeControl="Subscribe" attributeName="GPSSensorPosition" attributeID="1984" attributeDesc="Internal GPS sensor information.&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;] &amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value.&amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values." attributeStandard="NEVONEX" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPSPlugin" attributeDeviceClass="GPSPlugin" attributeUnit="-" attributeDataType="GPS" attributeFilDependent="YES">
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="internalGpsDetailedInfo" attributeID="9288" attributeDesc="Internal GPS sensor information.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members description:&amp;#xD;&amp;#xA;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth&apos;s equator, range:[-90, +90], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Speed -&gt; Speed of the GPS device, unit: km/hr&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Altitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    PacketTime (Epoch time of GPS data reception) -&gt; Default value &quot;0&quot;&amp;#xD;&amp;#xA;    Horizontal Accuracy -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Accuracy-&gt; Default value -99.99&amp;#xD;&amp;#xA;    Horizontal Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Position Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Time Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Speed -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Course -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Number of Satellites -&gt; Default value 0&amp;#xD;&amp;#xA;]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value. &amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&amp;#xD;&amp;#xA;" attributeStandard="NEVONEX" attributeStandardID="-" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPSPlugin" attributeDeviceClass="GPSPlugin" attributeUnit="-" attributeDataType="array" attributeFilDependent="YES">
+        <attributeType xsi:type="fcal:ARRAY_TYPE" array="//@arrays.0"/>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+    </features>
+  </providers>
+  <providers fname="Implement provider">
+    <features fname="Implement" machineID="351">
+      <attributes attributeControl="Subscribe" attributeName="LifetimeWorkingHours" attributeID="350" attributeDesc="The number of working hours of a device element over its entire lifetime." attributeStandard="ISOBUS" attributeStandardID="DDI215" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="10ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Implement" attributeDeviceClass="Implement" attributeUnit="-" attributeDataType="DOUBLE" attributeFilDependent="YES">
+        <cycleValues>10ms</cycleValues>
+        <cycleValues>20ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+    </features>
+  </providers>
+  <providers fname="ISOPGN provider">
+    <features fname="ISOPGN" machineID="547">
+      <attributes attributeControl="Subscribe" attributeName="AccpedPos1" attributeID="215" attributeDesc="Accelerator Pedal Position 1 in Percent  Resolution: 0.4%/bit, 0 offset." attributeStandard="PGN" attributeStandardID="0xF003" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="50ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>50ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="AmbAirt" attributeID="306" attributeDesc="Ambient Air Temperature in &amp;#xb0;C (SPN 171). Resolution: 0.03125 &amp;#xb0;C/bit, -273&amp;#xb0;C offset" attributeStandard="PGN" attributeStandardID="0xFEF5" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="BrkPedPos" attributeID="9336" attributeDesc="Brake Pedal Position. SPN : 521" attributeStandard="PGN" attributeStandardID="0xF001" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="100ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="EngFuRatePerTime" attributeID="294" attributeDesc="Amount of fuel consumed by engine per unit of time(SPN 183). Resolution: 0.05L/h per bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xFEF2" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="100ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="EngSpd" attributeID="224" attributeDesc="Engine Speed in rpm (SPN 190). Resolution: 0.125 rpm/bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xF004" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="50ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>50ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="EngTotOperHrs" attributeID="273" attributeDesc="Engine Total Hours of Operation in hours (hr) (SPN 247). Resolution: 0.05 hr/bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xFEE5" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Adhoc" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="FuLvlPer" attributeID="314" attributeDesc="Fuel Level in Percent (SPN 96). Resolution: 0.4%/bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xFEFC" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="FuLvlPer2" attributeID="9173" attributeDesc="Fuel Level in Percent (SPN 38). Resolution: 0.4%/bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xFEFC" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="GndBasdMacSpd" attributeID="267" attributeDesc="Ground-Based Machine Speed in m/s (SPN 1859, cp. A.5). Resolution: 0.001 m/s/bit, 0 offset; upper byte resolution = 0.256 m/s/bit" attributeStandard="PGN" attributeStandardID="0xFE49" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="100ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="TachoVehSpd" attributeID="8744" attributeDesc="(SPN: 1624) Speed of the vehicle registered by the tachograph.&amp;#xA;Data Length: 2 bytes&amp;#xA;Resolution: 1/256 km/h per bit, 0 offset&amp;#xA;Data Range: 0 to 250.996 km/h" attributeStandard="PGN" attributeStandardID="0xFE6C" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="50ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>50ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="TotalVehDist" attributeID="8746" attributeDesc="Accumulated distance traveled by the vehicle during its operation.&amp;#xA;NOTE - See SPN 245 for alternate resolution.&amp;#xA;Data Length: 4 bytes&amp;#xA;Resolution: 5 m/bit, 0 offset&amp;#xA;Data Range: 0 to 21,055,406 km" attributeStandard="PGN" attributeStandardID="0xFEC1" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="LONG" attributeFilDependent="YES">
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="TotVehHrs" attributeID="276" attributeDesc="Total Vehicle Hours in hours (hr) (SPN 246). Resolution: 0.05 hr/bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xFEE7" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Adhoc" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="WhlBasdMacSpd" attributeID="263" attributeDesc="Wheel Based Machine Speed in m/s (SPN 1862, cp. A.8). Resolution: 0.001 m/s/bit, 0 offset" attributeStandard="PGN" attributeStandardID="0xFE48" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="100ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="ISOPGN" attributeDeviceClass="ISOPGN" attributeUnit="-" attributeDataType="FLOAT" attributeFilDependent="YES">
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+    </features>
+  </providers>
+  <providers fname="Platform_Service provider">
+    <features fname="Platform_Service" multiplicity="true" machineID="6679">
+      <attributes attributeControl="Subscribe" attributeName="Download" attributeID="0" attributeDesc="Download a file/message from the cloud to the feature." attributeStandard="" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Platform_Service->Cloud" attributeDeviceClass="Platform_Service" attributeUnit="-" attributeDataType="" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="Upload Data" attributeID="0" attributeDesc="upload data in String format to the cloud from the feature." attributeStandard="" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Platform_Service->Cloud" attributeDeviceClass="Platform_Service" attributeUnit="-" attributeDataType="" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="Upload File" attributeID="0" attributeDesc="upload a file to the cloud from the feature." attributeStandard="" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Platform_Service->Cloud" attributeDeviceClass="Platform_Service" attributeUnit="-" attributeDataType="" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="Receive" attributeID="0" attributeDesc="receive a file/command to the feature from the device." attributeStandard="" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Platform_Service->Device2Device" attributeDeviceClass="Platform_Service" attributeUnit="-" attributeDataType="" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="Send Command" attributeID="0" attributeDesc="send a command to the device from the feature." attributeStandard="" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Platform_Service->Device2Device" attributeDeviceClass="Platform_Service" attributeUnit="-" attributeDataType="" attributeFilDependent="YES"/>
+      <attributes attributeControl="Subscribe" attributeName="Send File" attributeID="0" attributeDesc="send a file to the device from the feature." attributeStandard="" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="Platform_Service->Device2Device" attributeDeviceClass="Platform_Service" attributeUnit="-" attributeDataType="" attributeFilDependent="YES"/>
+      <elements fname="Cloud" machineID="6680"/>
+      <elements fname="Device2Device" machineID="6681"/>
+    </features>
+  </providers>
+  <arrays name="INTERNAL_GPS_DETAILEDINFO_R" description="Internal GPS sensor information.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members description:&amp;#xD;&amp;#xA;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth&apos;s equator, range:[-90, +90], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Speed -&gt; Speed of the GPS device, unit: km/hr&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Altitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    PacketTime (Epoch time of GPS data reception) -&gt; Default value &quot;0&quot;&amp;#xD;&amp;#xA;    Horizontal Accuracy -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Accuracy-&gt; Default value -99.99&amp;#xD;&amp;#xA;    Horizontal Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Position Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Time Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Speed -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Course -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Number of Satellites -&gt; Default value 0&amp;#xD;&amp;#xA;]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value. &amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&amp;#xD;&amp;#xA;" accessType="READ">
+    <arrayLiterals name="Latitude" unit="degree" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="1" name="Longitude" unit="degree" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="2" name="Altitude" unit="meters" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="3" name="TimeStamp" unit="milliseconds" type="STRING" dataType="EString"/>
+    <arrayLiterals index="4" name="HorizontalAccuracy" unit="meters" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="5" name="VerticalAccuracy" unit="meters" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="6" name="HorizontalDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="7" name="PositionDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="8" name="VerticalDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="9" name="TimeDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="10" name="Speed" unit="km/hr" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="11" name="Course" unit="degree" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="12" name="NumberOfSatellites" unit="-" type="INT" dataType="EInt=0"/>
+  </arrays>
+  <fIdentity/>
+</fcal:Model>
