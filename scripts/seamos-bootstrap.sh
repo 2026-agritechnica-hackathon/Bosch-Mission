@@ -76,11 +76,37 @@ else
   echo "[skip] SDK dependencies already extracted (or tarball absent)"
 fi
 
-# Restore CustomUI deps if customui-src/ is present but not yet installed.
-if [ -d "$CUI_DIR" ] && [ ! -d "$CUI_DIR/node_modules" ]; then
-  echo "[..] installing customui-src dependencies (npm install)"
-  ( cd "$CUI_DIR" && npm install )
-  echo "[ok] customui-src deps installed — run 'npm run build' to deploy into ui/"
+# Point the test simulator at THIS clone's UI folder. Simulator.properties
+# is committed with a relative path (../<app>/ui) that works from the
+# gen.tests CWD, but rewrite it to an absolute path here so it is robust
+# regardless of how the IDE launches the simulator.
+SIM_PROPS="$ROOT/com.bosch.fsp.${PROJECT}.gen.tests/Simulator.properties"
+if [ -f "$SIM_PROPS" ]; then
+  tmp="$SIM_PROPS.tmp.$$"
+  grep -v '^uiFolderLocation=' "$SIM_PROPS" > "$tmp" || true
+  echo "uiFolderLocation=$DEEP_UI" >> "$tmp"
+  mv "$tmp" "$SIM_PROPS"
+  echo "[ok] Simulator.properties uiFolderLocation -> $DEEP_UI"
+fi
+
+# CustomUI: install deps AND build, so <app>/ui/ is populated. Without a
+# build, the simulator serves an empty folder and 127.0.0.1:6563 is blank.
+if [ -d "$CUI_DIR" ]; then
+  if [ ! -d "$CUI_DIR/node_modules" ]; then
+    echo "[..] installing customui-src dependencies (npm install)"
+    ( cd "$CUI_DIR" && npm install )
+  fi
+  if [ ! -f "$DEEP_UI/index.html" ]; then
+    echo "[..] building CustomUI into $DEEP_UI (npm run build)"
+    ( cd "$CUI_DIR" && npm run build )
+    if [ -f "$DEEP_UI/index.html" ]; then
+      echo "[ok] CustomUI deployed — 127.0.0.1:6563 will serve it"
+    else
+      echo "WARN: build did not produce $DEEP_UI/index.html — check customui-src" >&2
+    fi
+  else
+    echo "[skip] CustomUI already built ($DEEP_UI/index.html present)"
+  fi
 fi
 
 echo "[done] Next: open this folder in seamos-ide and run Import / full build."
