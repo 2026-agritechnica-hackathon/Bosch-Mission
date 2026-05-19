@@ -1,28 +1,28 @@
 # SeamOS Hackathon Template — Setup
 
-SeamOS C++ app template (FD flat layout). Works on **Linux and macOS via
-seamos-ide** — the C++ toolchain runs inside a forced `linux/amd64` Docker
-container, so the host OS/arch does not matter **as long as the
-prerequisites below are met**.
+SeamOS C++ app template (FD flat layout). Builds and runs via seamos-ide
+on **Linux x86_64 (native toolchain — no Docker)** and **macOS (via
+Docker)**. The committed SDK is Linux x86_64 ELF, so where the C++
+toolchain runs differs by host OS (see Platform notes).
 
 ## 0. Prerequisites (READ FIRST — not bundled in this repo)
 
 These are NOT in the repo and MUST exist on each participant's machine.
-Skipping either one causes the exact failures noted.
 
 | Requirement | Why | If missing |
 |---|---|---|
-| **Docker** running (Desktop on macOS, Engine on Linux) | The C++ SDK is Linux x86_64 ELF only; seamos-ide builds & runs it in a `linux/amd64` container, and fif build uses Docker too | IDE shows "Docker를 사용할 수 없습니다 / cannot use Docker" — no build/run |
-| **JDK 21** as the active `java` | The test simulator is compiled to Java 21; the IDE launches `java` from the environment with no version fallback | `LinkageError ... TestSimulator` / `TestSimulator exited with code 1` |
+| **JDK 21** as the active `java` (all platforms) | The test simulator is compiled to Java 21; the IDE launches `java` from the environment with no version fallback | `LinkageError ... TestSimulator` / `TestSimulator exited with code 1` |
+| **Docker** running — **macOS only** for C++ build/run; **all platforms** for `fif` build | seamos-ide builds/runs C++ natively on Linux but inside a `linux/amd64` container on macOS (can't link x86_64 ELF natively). `fif` build always uses Docker | macOS: "Docker를 사용할 수 없습니다" — no build/run. Linux: only `fif` build affected |
+| **Native C++ toolchain** — **Linux only** (`gcc`/`g++`, `cmake` ≥ 3.12, `make`) | Linux build runs cmake directly on the host, not in Docker | `cmake`/compiler not found at full build |
 
 ### Platform notes
 
-| Environment | Status | Extra step |
-|---|---|---|
-| Linux x86_64 | ✅ best | — |
-| macOS Intel | ✅ | Docker Desktop |
-| macOS Apple Silicon | ⚠️ works, slower | Docker Desktop → Settings → enable **Rosetta / amd64 emulation** |
-| Linux arm64 | ⚠️ works, slower | enable amd64 binfmt/qemu (`docker run --privileged tonistiigi/binfmt --install amd64`) |
+| Environment | Status | Docker needed? | Notes |
+|---|---|---|---|
+| Linux **x86_64** | ✅ best | only for `fif` build | native build/run; install `build-essential cmake` |
+| macOS Intel | ✅ | yes (C++ build/run + fif) | Docker Desktop |
+| macOS Apple Silicon | ⚠️ works, slower | yes (C++ build/run + fif) | Docker Desktop → enable **Rosetta / amd64 emulation** |
+| Linux **arm64** | ❌ not supported | — | committed SDK is x86_64 ELF; Linux build is native (no emulation path in IDE) — use an x86_64 Linux host |
 
 ### Verify / fix JDK 21
 
@@ -103,7 +103,8 @@ automatically. Verify with `/plugin` and `/plugin marketplace list`.
 | Symptom | Cause | Fix |
 |---|---|---|
 | `LinkageError ... TestSimulator` / `exited with code 1` | active `java` is not 21 (or IDE launched with stale `JAVA_HOME`) | install JDK 21, set `JAVA_HOME`, **relaunch IDE from a fresh shell** (§0) |
-| "Docker를 사용할 수 없습니다" / build hangs | Docker not running, or amd64 emulation off on Apple Silicon | start Docker; enable Rosetta/amd64 (§0) |
+| "Docker를 사용할 수 없습니다" (macOS C++ build/run, or `fif` build any OS) | Docker not running, or amd64 emulation off on Apple Silicon | start Docker; enable Rosetta/amd64 (§0). Linux C++ build/run does NOT use Docker |
+| `cmake`/`g++` not found at full build (Linux) | native toolchain missing — Linux builds on the host, not Docker | install `build-essential cmake` (Debian/Ubuntu) |
 | `FindPackageHandleStandardArgs.cmake:230 ... Could NOT find <pkg>` (Boost / FCAL / NEVONEX-FCAL-PLATFORM / PahoMqttCpp / jsoncpp) | SDK dependencies not extracted — `<app>_CPP_SDK/dependencies/` has only the `.tar.xz` | run `bash scripts/seamos-bootstrap.sh` (extracts it), or manually: `tar xf <app>_CPP_SDK/dependencies/INSTALL_x86_64.tar.xz -C <app>_CPP_SDK/dependencies/`, then rebuild |
 | `127.0.0.1:6563` → 404 Not Found | CustomUI not built into `<app>/ui/` | `cd customui-src && npm run build` |
 | Plugin skills can't resolve project paths | `.seamos-context.json` missing (gitignored) | `bash scripts/seamos-bootstrap.sh` |
