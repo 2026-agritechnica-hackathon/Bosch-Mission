@@ -56,6 +56,26 @@ EOF
 
 echo "[ok] wrote $ROOT/.seamos-context.json (project=$PROJECT)"
 
+# Extract the C++ SDK runtime/headers from the committed tarball.
+# .gitignore excludes <SDK>/dependencies/{lib,include}; only the tarball is
+# committed. seamos-ide extracts it during project Import, but a plain
+# `cmake -DCMAKE_PREFIX_PATH=dependencies` build (or build-before-import)
+# would otherwise fail every FIND_PACKAGE with
+# "FindPackageHandleStandardArgs.cmake:230 ... Could NOT find <pkg>".
+SDK_DEPS="$SDK_DIR/dependencies"
+SDK_TAR="$SDK_DEPS/INSTALL_x86_64.tar.xz"
+if [ -f "$SDK_TAR" ] && [ ! -d "$SDK_DEPS/lib/cmake" ]; then
+  echo "[..] extracting SDK dependencies ($(basename "$SDK_TAR"))"
+  tar xf "$SDK_TAR" -C "$SDK_DEPS"
+  if [ -d "$SDK_DEPS/lib/cmake" ]; then
+    echo "[ok] SDK dependencies extracted into $SDK_DEPS"
+  else
+    echo "WARN: extraction did not produce lib/cmake — check the tarball" >&2
+  fi
+else
+  echo "[skip] SDK dependencies already extracted (or tarball absent)"
+fi
+
 # Restore CustomUI deps if customui-src/ is present but not yet installed.
 if [ -d "$CUI_DIR" ] && [ ! -d "$CUI_DIR/node_modules" ]; then
   echo "[..] installing customui-src dependencies (npm install)"
