@@ -1,11 +1,56 @@
 # SeamOS Hackathon Template — Setup
 
-This is a SeamOS C++ app template (FD flat layout). Linux / macOS.
+SeamOS C++ app template (FD flat layout). Works on **Linux and macOS via
+seamos-ide** — the C++ toolchain runs inside a forced `linux/amd64` Docker
+container, so the host OS/arch does not matter **as long as the
+prerequisites below are met**.
+
+## 0. Prerequisites (READ FIRST — not bundled in this repo)
+
+These are NOT in the repo and MUST exist on each participant's machine.
+Skipping either one causes the exact failures noted.
+
+| Requirement | Why | If missing |
+|---|---|---|
+| **Docker** running (Desktop on macOS, Engine on Linux) | The C++ SDK is Linux x86_64 ELF only; seamos-ide builds & runs it in a `linux/amd64` container, and fif build uses Docker too | IDE shows "Docker를 사용할 수 없습니다 / cannot use Docker" — no build/run |
+| **JDK 21** as the active `java` | The test simulator is compiled to Java 21; the IDE launches `java` from the environment with no version fallback | `LinkageError ... TestSimulator` / `TestSimulator exited with code 1` |
+
+### Platform notes
+
+| Environment | Status | Extra step |
+|---|---|---|
+| Linux x86_64 | ✅ best | — |
+| macOS Intel | ✅ | Docker Desktop |
+| macOS Apple Silicon | ⚠️ works, slower | Docker Desktop → Settings → enable **Rosetta / amd64 emulation** |
+| Linux arm64 | ⚠️ works, slower | enable amd64 binfmt/qemu (`docker run --privileged tonistiigi/binfmt --install amd64`) |
+
+### Verify / fix JDK 21
+
+```bash
+java -version          # must report 21.x
+/usr/libexec/java_home -V          # macOS: is a 21 JVM registered?
+```
+
+If `java -version` is not 21:
+
+- **macOS (Homebrew):**
+  ```bash
+  brew install openjdk@21
+  sudo ln -sfn $(brew --prefix openjdk@21)/libexec/openjdk.jdk \
+       /Library/Java/JavaVirtualMachines/openjdk-21.jdk
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home
+  ```
+  Add the `export JAVA_HOME=...` to `~/.zshrc`, then **fully quit and
+  relaunch seamos-ide from a fresh shell** — a running IDE keeps the old
+  `JAVA_HOME` and the error persists even after fixing it.
+- **Linux (Debian/Ubuntu):** `sudo apt install openjdk-21-jdk` then
+  `sudo update-alternatives --config java` → pick 21. Relaunch the IDE.
 
 ## 1. Clone & bootstrap
 
 ```bash
-git clone <repo-url> && cd <repo>
+git clone https://github.com/2026-agritechnica-hackathon/Bosch-Mission.git
+cd Bosch-Mission
 bash scripts/seamos-bootstrap.sh
 ```
 
@@ -21,8 +66,6 @@ The IDE regenerates the layers that are intentionally NOT committed:
 `<app>_CPP_SDK/src-gen/`, and re-extracts the SDK runtime from
 `<app>_CPP_SDK/dependencies/INSTALL_x86_64.tar.xz`.
 
-Requires **JDK 21** on PATH (the test simulator is compiled to Java 21).
-
 ## 3. CustomUI
 
 UI source of truth is `customui-src/` (React). Build deploys into
@@ -32,14 +75,27 @@ UI source of truth is `customui-src/` (React). Build deploys into
 cd customui-src && npm run build
 ```
 
-Never edit `<app>/ui/` directly — it is build output.
+Never edit `<app>/ui/` directly — it is build output. The local simulator
+serves this folder; if `http://127.0.0.1:6563` returns 404, the UI has not
+been built yet.
 
 ## 4. Claude Code plugin (optional, recommended)
 
 `.claude/settings.json` enables the **seamos-everywhere** plugin
-(build-fif, run-app, upload-app, …). On first `claude` run in the folder,
-approve the workspace-trust and marketplace prompts; the plugin installs
+(build-fif, run-app, upload-app, …) from the public marketplace
+`AGMO-Inc/seamos-everywhere`. On first `claude` run in the folder, approve
+the workspace-trust and marketplace prompts; the plugin installs
 automatically. Verify with `/plugin` and `/plugin marketplace list`.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `LinkageError ... TestSimulator` / `exited with code 1` | active `java` is not 21 (or IDE launched with stale `JAVA_HOME`) | install JDK 21, set `JAVA_HOME`, **relaunch IDE from a fresh shell** (§0) |
+| "Docker를 사용할 수 없습니다" / build hangs | Docker not running, or amd64 emulation off on Apple Silicon | start Docker; enable Rosetta/amd64 (§0) |
+| `127.0.0.1:6563` → 404 Not Found | CustomUI not built into `<app>/ui/` | `cd customui-src && npm run build` |
+| Plugin skills can't resolve project paths | `.seamos-context.json` missing (gitignored) | `bash scripts/seamos-bootstrap.sh` |
+| Plugin not auto-installing | workspace not trusted / offline | approve trust prompt; ensure network for first install |
 
 ## What's committed vs regenerated
 
