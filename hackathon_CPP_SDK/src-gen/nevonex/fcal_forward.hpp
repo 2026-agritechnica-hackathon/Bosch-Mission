@@ -31,9 +31,9 @@ namespace nevonex
         class BulkProcessor;
         using BulkProcessor_ptr = ::ecore::Ptr<BulkProcessor>;
 
-// INTERNAL_GPS_DETAILEDINFO_R
-        class INTERNAL_GPS_DETAILEDINFO_R;
-        using INTERNAL_GPS_DETAILEDINFO_R_ptr = ::ecore::Ptr<INTERNAL_GPS_DETAILEDINFO_R>;
+// GPS_INFO_R
+        class GPS_INFO_R;
+        using GPS_INFO_R_ptr = ::ecore::Ptr<GPS_INFO_R>;
 
 // EEnum
 

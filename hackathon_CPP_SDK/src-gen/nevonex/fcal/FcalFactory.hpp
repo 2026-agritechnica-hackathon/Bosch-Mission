@@ -23,7 +23,7 @@ namespace nevonex
             static FcalFactory_ptr _instance();
 
             virtual BulkProcessor_ptr createBulkProcessor();
-            virtual INTERNAL_GPS_DETAILEDINFO_R_ptr createINTERNAL_GPS_DETAILEDINFO_R();
+            virtual GPS_INFO_R_ptr createGPS_INFO_R();
 
             virtual ::ecore::EObject_ptr create ( ::ecore::EClass_ptr _eClass);
             virtual ::ecore::EJavaObject createFromString ( ::ecore::EDataType_ptr _eDataType, ::ecore::EString const& _literalValue);
@@ -55,11 +55,11 @@ namespace nevonex
             return packageFactory->createBulkProcessor();
         }
 
-        template< > inline INTERNAL_GPS_DETAILEDINFO_R_ptr create< INTERNAL_GPS_DETAILEDINFO_R >()
+        template< > inline GPS_INFO_R_ptr create< GPS_INFO_R >()
         {
             auto eFactory = FcalPackage::_instance()->getEFactoryInstance();
             auto packageFactory = dynamic_cast< FcalFactory* >(eFactory.get());
-            return packageFactory->createINTERNAL_GPS_DETAILEDINFO_R();
+            return packageFactory->createGPS_INFO_R();
         }
 
     } // fcal

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
 <fcal:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fcal="www.bosch.com/fcal" featureName="hackathon" featureVersion="1.0.0" featureAutoRun="false" featureUIType="CustomUI" featurePort="1456" featurePlatformServices="Download,Upload Data,Upload File,Receive,Send Command,Send File" featureResFolderType="M">
-  <providers fname="GPSPlugin provider">
-    <features fname="GPSPlugin" machineID="5771">
-      <attributes attributeControl="Subscribe" attributeName="GPSSensorPosition" attributeID="1984" attributeDesc="Internal GPS sensor information.&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;] &amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value.&amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values." attributeStandard="NEVONEX" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPSPlugin" attributeDeviceClass="GPSPlugin" attributeUnit="-" attributeDataType="GPS" attributeFilDependent="YES">
+  <providers fname="GPS_TC provider">
+    <features fname="GPS_TC" machineID="6676">
+      <attributes attributeControl="Subscribe" attributeName="Active_TC_GPS_source" attributeID="3954" attributeDesc="Specifies if the active external GPS source is NMEA2000 or NMEA0183" attributeStandard="NEVONEX" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="10ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPS_TC" attributeDeviceClass="GPS_TC" attributeUnit="-" attributeDataType="enum" attributeFilDependent="YES">
+        <cycleValues>10ms</cycleValues>
+        <cycleValues>20ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
         <cycleValues>1000ms</cycleValues>
         <cycleValues>2000ms</cycleValues>
         <cycleValues>10000ms</cycleValues>
@@ -12,8 +16,26 @@
         <cycleValues>600000ms</cycleValues>
         <cycleValues>5000ms</cycleValues>
       </attributes>
-      <attributes attributeControl="Subscribe" attributeName="internalGpsDetailedInfo" attributeID="9288" attributeDesc="Internal GPS sensor information.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members description:&amp;#xD;&amp;#xA;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth&apos;s equator, range:[-90, +90], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Speed -&gt; Speed of the GPS device, unit: km/hr&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Altitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    PacketTime (Epoch time of GPS data reception) -&gt; Default value &quot;0&quot;&amp;#xD;&amp;#xA;    Horizontal Accuracy -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Accuracy-&gt; Default value -99.99&amp;#xD;&amp;#xA;    Horizontal Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Position Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Time Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Speed -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Course -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Number of Satellites -&gt; Default value 0&amp;#xD;&amp;#xA;]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value. &amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&amp;#xD;&amp;#xA;" attributeStandard="NEVONEX" attributeStandardID="-" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="1000ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPSPlugin" attributeDeviceClass="GPSPlugin" attributeUnit="-" attributeDataType="array" attributeFilDependent="YES">
+      <attributes attributeControl="Subscribe" attributeName="PositionofGpsSensor" attributeID="123" attributeDesc="Absolute position of GPS sensor." attributeStandard="NEVONEX" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="10ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPS_TC" attributeDeviceClass="GPS_TC" attributeUnit="-" attributeDataType="GPS" attributeFilDependent="YES">
+        <cycleValues>10ms</cycleValues>
+        <cycleValues>20ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
+        <cycleValues>1000ms</cycleValues>
+        <cycleValues>2000ms</cycleValues>
+        <cycleValues>10000ms</cycleValues>
+        <cycleValues>30000ms</cycleValues>
+        <cycleValues>60000ms</cycleValues>
+        <cycleValues>300000ms</cycleValues>
+        <cycleValues>600000ms</cycleValues>
+        <cycleValues>5000ms</cycleValues>
+      </attributes>
+      <attributes attributeControl="Subscribe" attributeName="TcGpsInfo" attributeID="3904" attributeDesc="Gives GPS Quality, Altitude, Position and UTC time in one payload" attributeStandard="NEVONEX" attributeStandardID="" attributeArtifactUrl="" attributeMacType="" attributeFILVersion="" attributeRelVersion="" attributeCreatedby="" attributeMode="Cyclic" attributeCyclicUnit="10ms" attributeState="Dynamic" attributeStage="DEVELOPMENT" attributeApiVersion="0.0.1" attributeUpdateRate="Adhoc/Cyclic" attributeDeviceElement="GPS_TC" attributeDeviceClass="GPS_TC" attributeUnit="-" attributeDataType="array" attributeFilDependent="YES">
         <attributeType xsi:type="fcal:ARRAY_TYPE" array="//@arrays.0"/>
+        <cycleValues>10ms</cycleValues>
+        <cycleValues>20ms</cycleValues>
+        <cycleValues>100ms</cycleValues>
+        <cycleValues>200ms</cycleValues>
         <cycleValues>1000ms</cycleValues>
         <cycleValues>2000ms</cycleValues>
         <cycleValues>10000ms</cycleValues>
@@ -185,20 +207,14 @@
       <elements fname="Device2Device" machineID="6681"/>
     </features>
   </providers>
-  <arrays name="INTERNAL_GPS_DETAILEDINFO_R" description="Internal GPS sensor information.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members description:&amp;#xD;&amp;#xA;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth&apos;s equator, range:[-90, +90], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Speed -&gt; Speed of the GPS device, unit: km/hr&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Altitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    PacketTime (Epoch time of GPS data reception) -&gt; Default value &quot;0&quot;&amp;#xD;&amp;#xA;    Horizontal Accuracy -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Accuracy-&gt; Default value -99.99&amp;#xD;&amp;#xA;    Horizontal Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Position Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Time Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Speed -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Course -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Number of Satellites -&gt; Default value 0&amp;#xD;&amp;#xA;]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value. &amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&amp;#xD;&amp;#xA;" accessType="READ">
-    <arrayLiterals name="Latitude" unit="degree" type="DOUBLE" dataType="EDouble=0.0"/>
-    <arrayLiterals index="1" name="Longitude" unit="degree" type="DOUBLE" dataType="EDouble=0.0"/>
-    <arrayLiterals index="2" name="Altitude" unit="meters" type="DOUBLE" dataType="EDouble=0.0"/>
-    <arrayLiterals index="3" name="TimeStamp" unit="milliseconds" type="STRING" dataType="EString"/>
-    <arrayLiterals index="4" name="HorizontalAccuracy" unit="meters" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="5" name="VerticalAccuracy" unit="meters" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="6" name="HorizontalDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="7" name="PositionDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="8" name="VerticalDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="9" name="TimeDil" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="10" name="Speed" unit="km/hr" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="11" name="Course" unit="degree" type="FLOAT" dataType="EFloat=0.0"/>
-    <arrayLiterals index="12" name="NumberOfSatellites" unit="-" type="INT" dataType="EInt=0"/>
+  <arrays name="GPS_INFO_R" description="Gives GPS Quality, Altitude, Position and UTC time in one payload" accessType="READ">
+    <arrayLiterals name="Latitude" unit="deg" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="1" name="Longitude" unit="deg" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="2" name="Altitude" unit="m" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="3" name="PositionTime" unit="s" type="DOUBLE" dataType="EDouble=0.0"/>
+    <arrayLiterals index="4" name="HDOP" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="5" name="PDOP" unit="-" type="FLOAT" dataType="EFloat=0.0"/>
+    <arrayLiterals index="6" name="NumberOfSattelites" unit="-" type="INT" dataType="EInt=0"/>
   </arrays>
   <fIdentity/>
 </fcal:Model>

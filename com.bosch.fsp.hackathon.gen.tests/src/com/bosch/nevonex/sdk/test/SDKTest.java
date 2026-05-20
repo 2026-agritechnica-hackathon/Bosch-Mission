@@ -26,9 +26,9 @@ import com.bosch.fsp.runtime.registry.FCALRuntime;
 import org.junit.BeforeClass;
 import com.bosch.nevonex.fcb.impl.FcbPackage;
 import com.bosch.nevonex.fcal.impl.FcalPackage;
-import com.bosch.nevonex.gpsplugin.impl.GpspluginPackage;
-import com.bosch.nevonex.gpsplugin.impl.GPSPluginProvider;
-import com.bosch.nevonex.gpsplugin.impl.GPSPlugin;
+import com.bosch.nevonex.gps_tc.impl.Gps_tcPackage;
+import com.bosch.nevonex.gps_tc.impl.GPS_TCProvider;
+import com.bosch.nevonex.gps_tc.impl.GPS_TC;
 import com.bosch.nevonex.implement.impl.ImplementPackage;
 import com.bosch.nevonex.implement.impl.ImplementProvider;
 import com.bosch.nevonex.implement.impl.Implement;
@@ -41,7 +41,7 @@ public class SDKTest {
     private static TestFilClient filClient = TestFilClient.getInstance();
     private static Properties prop;
     private static Map<String, String> featureToAddressMap = new HashMap<>();
-    private static GPSPluginProvider gpspluginProvider;
+    private static GPS_TCProvider gps_tcProvider;
     private static ImplementProvider implementProvider;
     private static ISOPGNProvider isopgnProvider;
 
@@ -65,7 +65,7 @@ public class SDKTest {
         runtime.startRuntime(providerarr, new String[0], new String[0]);
         runtime.initialize();
         runtime.startProviders();
-        gpspluginProvider = (GPSPluginProvider) runtime.getMachineProvider("GPSPluginProvider");
+        gps_tcProvider = (GPS_TCProvider) runtime.getMachineProvider("GPS_TCProvider");
         implementProvider = (ImplementProvider) runtime.getMachineProvider("ImplementProvider");
         isopgnProvider = (ISOPGNProvider) runtime.getMachineProvider("ISOPGNProvider");
         FCALLogs.getInstance().log.info("Runtime started ...");
@@ -73,16 +73,17 @@ public class SDKTest {
 
     private static void initializeDom() throws Exception {
         filClient.createDom(TestFilClient.TOPIC_CREATION, "./data/sample_data.xml");
-        while (gpspluginProvider.getGPSPlugin() == null || implementProvider.getImplement() == null || isopgnProvider.getISOPGN() == null) {
+        while (gps_tcProvider.getGPS_TC() == null || implementProvider.getImplement() == null || isopgnProvider.getISOPGN() == null) {
             Thread.sleep(5000);
         }
     }
 
     public static void initMaps() {
-        featureToAddressMap.put("GPSPlugin.machineconnect.sub", "/1/+");
-        featureToAddressMap.put("GPSPlugin.machinedata.sub", "/0/+");
-        featureToAddressMap.put("GPSPlugin.gPSSensorPosition.sub", "/1984");
-        featureToAddressMap.put("GPSPlugin.internalGpsDetailedInfo.sub", "/9288");
+        featureToAddressMap.put("GPS_TC.machineconnect.sub", "/1/+");
+        featureToAddressMap.put("GPS_TC.machinedata.sub", "/0/+");
+        featureToAddressMap.put("GPS_TC.active_TC_GPS_source.sub", "/3954");
+        featureToAddressMap.put("GPS_TC.positionofGpsSensor.sub", "/123");
+        featureToAddressMap.put("GPS_TC.tcGpsInfo.sub", "/3904");
         featureToAddressMap.put("Implement.machineconnect.sub", "/1/+");
         featureToAddressMap.put("Implement.machinedata.sub", "/0/+");
         featureToAddressMap.put("Implement.lifetimeWorkingHours.sub", "/350");
@@ -105,8 +106,8 @@ public class SDKTest {
 
     @Test
     public void testMachineDomBuild() {
-        GPSPlugin gPSPlugin = (GPSPlugin) gpspluginProvider.getGPSPlugin();
-        assertNotNull(gPSPlugin);
+        GPS_TC gPS_TC = (GPS_TC) gps_tcProvider.getGPS_TC();
+        assertNotNull(gPS_TC);
         Implement implement = (Implement) implementProvider.getImplement();
         assertNotNull(implement);
         ISOPGN iSOPGN = (ISOPGN) isopgnProvider.getISOPGN();
@@ -114,20 +115,20 @@ public class SDKTest {
     }
 
     @Test
-    public void testSubscribeGPSPlugininternalGpsDetailedInfo() throws Exception {
-        String address = "/9288";
+    public void testSubscribeGPS_TCTcGpsInfo() throws Exception {
+        String address = "/3904";
         EStructuralFeature feature = getFeatureByInterfaceAddress(address);
-        com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R value = (com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R) getRandomValue(feature, prop);
-        GPSPlugin gPSPlugin_ = (GPSPlugin) gpspluginProvider.getGPSPlugin();
-        gPSPlugin_.eUnset(feature);
-        filClient.publishValue("GPSPlugin" + address, value, "0", "0");
+        com.bosch.nevonex.fcal.IGPS_INFO_R value = (com.bosch.nevonex.fcal.IGPS_INFO_R) getRandomValue(feature, prop);
+        GPS_TC gPS_TC_ = (GPS_TC) gps_tcProvider.getGPS_TC();
+        gPS_TC_.eUnset(feature);
+        filClient.publishValue("GPS_TC" + address, value, "0", "0");
         int k = 0;
-        while (!gPSPlugin_.eIsSet(feature)) {
+        while (!gPS_TC_.eIsSet(feature)) {
             Thread.sleep(250);
             if (++k == 20) break;
         }
-        assertTrue(gPSPlugin_.eIsSet(feature));
-        com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R testTemp = (com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R) gPSPlugin_.getInternalGpsDetailedInfo();
+        assertTrue(gPS_TC_.eIsSet(feature));
+        com.bosch.nevonex.fcal.IGPS_INFO_R testTemp = (com.bosch.nevonex.fcal.IGPS_INFO_R) gPS_TC_.getTcGpsInfo();
         Object[] expected = value.getArrayValues();
         Object[] actual = testTemp.getArrayValues();
         for (int i = 0; i < expected.length; i++) {
@@ -153,12 +154,14 @@ public class SDKTest {
 
     public static EClass getEClassByName(String name) {
         switch (name) {
-        case "gpsplugin":
-            return (EClass) GpspluginPackage.eINSTANCE.getEClassifier("IGPSPlugin");
-        case "gpssensorposition":
-            return (EClass) FcalPackage.eINSTANCE.getEClassifier("GPSSensorPosition");
-        case "internal_gps_detailedinfo_r":
-            return (EClass) FcalPackage.eINSTANCE.getEClassifier("INTERNAL_GPS_DETAILEDINFO_R");
+        case "gps_tc":
+            return (EClass) Gps_tcPackage.eINSTANCE.getEClassifier("IGPS_TC");
+        case "active_tc_gps_source":
+            return (EClass) FcalPackage.eINSTANCE.getEClassifier("Active_TC_GPS_source");
+        case "positionofgpssensor":
+            return (EClass) FcalPackage.eINSTANCE.getEClassifier("PositionofGpsSensor");
+        case "gps_info_r":
+            return (EClass) FcalPackage.eINSTANCE.getEClassifier("GPS_INFO_R");
         case "implement":
             return (EClass) ImplementPackage.eINSTANCE.getEClassifier("IImplement");
         case "lifetimeworkinghours":

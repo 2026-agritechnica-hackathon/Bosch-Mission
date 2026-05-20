@@ -5,7 +5,7 @@ package com.bosch.nevonex.fcal.util;
 
 import com.bosch.nevonex.fcal.IBulkProcessor;
 import com.bosch.nevonex.fcal.IFcalFactory;
-import com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R;
+import com.bosch.nevonex.fcal.IGPS_INFO_R;
 
 import com.bosch.nevonex.fcal.impl.FcalPackage;
 
@@ -61,11 +61,11 @@ public class FcalSwitch<T> extends Switch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case FcalPackage.INTERNAL_GPS_DETAILEDINFO_R: {
-				IINTERNAL_GPS_DETAILEDINFO_R iNTERNAL_GPS_DETAILEDINFO_R = (IINTERNAL_GPS_DETAILEDINFO_R) theEObject;
-				T result = caseINTERNAL_GPS_DETAILEDINFO_R(iNTERNAL_GPS_DETAILEDINFO_R);
+			case FcalPackage.GPS_INFO_R: {
+				IGPS_INFO_R gPS_INFO_R = (IGPS_INFO_R) theEObject;
+				T result = caseGPS_INFO_R(gPS_INFO_R);
 				if (result == null)
-					result = caseIArrayType((IArrayType) iNTERNAL_GPS_DETAILEDINFO_R);
+					result = caseIArrayType((IArrayType) gPS_INFO_R);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -87,7 +87,7 @@ public class FcalSwitch<T> extends Switch<T> {
 		return null;
 	}
 
-	public T caseINTERNAL_GPS_DETAILEDINFO_R(IINTERNAL_GPS_DETAILEDINFO_R object) {
+	public T caseGPS_INFO_R(IGPS_INFO_R object) {
 		return null;
 	}
 

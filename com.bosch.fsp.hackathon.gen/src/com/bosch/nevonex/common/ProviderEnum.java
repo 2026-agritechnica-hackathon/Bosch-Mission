@@ -15,12 +15,12 @@ import java.util.List;
  */
 public enum ProviderEnum implements InternalProviderEnum {
 	/**
-	 * The '<em><b>GPSPluginProvider</b></em>' literal object.
-	 * @see #GPS_PLUGIN_PROVIDER_VALUE
+	 * The '<em><b>GPS_TCProvider</b></em>' literal object.
+	 * @see #GPS_TC_PROVIDER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	GPS_PLUGIN_PROVIDER(0, "GPSPluginProvider", "GPSPluginProvider"),
+	GPS_TC_PROVIDER(0, "GPS_TCProvider", "GPS_TCProvider"),
 
 	/**
 	 * The '<em><b>ImplementProvider</b></em>' literal object.
@@ -39,12 +39,12 @@ public enum ProviderEnum implements InternalProviderEnum {
 	ISOPGN_PROVIDER(2, "ISOPGNProvider", "ISOPGNProvider");
 
 	/**
-	 * The '<em><b>GPSPluginProvider</b></em>' literal value.
-	 * @see #GPS_PLUGIN_PROVIDER
+	 * The '<em><b>GPS_TCProvider</b></em>' literal value.
+	 * @see #GPS_TC_PROVIDER
 	 * @generated
 	 * @ordered
 	 */
-	public static final int GPS_PLUGIN_PROVIDER_VALUE = 0;
+	public static final int GPS_TC_PROVIDER_VALUE = 0;
 
 	/**
 	 * The '<em><b>ImplementProvider</b></em>' literal value.
@@ -66,7 +66,7 @@ public enum ProviderEnum implements InternalProviderEnum {
 	 * An array of all the '<em><b>ProviderEnum</b></em>' enumerators.
 	 * @generated
 	 */
-	private static final ProviderEnum[] VALUES_ARRAY = new ProviderEnum[] { GPS_PLUGIN_PROVIDER, IMPLEMENT_PROVIDER, ISOPGN_PROVIDER, };
+	private static final ProviderEnum[] VALUES_ARRAY = new ProviderEnum[] { GPS_TC_PROVIDER, IMPLEMENT_PROVIDER, ISOPGN_PROVIDER, };
 
 	/**
 	 * A public read-only list of all the '<em><b>ProviderEnum</b></em>' enumerators.
@@ -114,8 +114,8 @@ public enum ProviderEnum implements InternalProviderEnum {
 	 */
 	public static ProviderEnum get(int value) {
 		switch (value) {
-		case GPS_PLUGIN_PROVIDER_VALUE:
-			return GPS_PLUGIN_PROVIDER;
+		case GPS_TC_PROVIDER_VALUE:
+			return GPS_TC_PROVIDER;
 		case IMPLEMENT_PROVIDER_VALUE:
 			return IMPLEMENT_PROVIDER;
 		case ISOPGN_PROVIDER_VALUE:

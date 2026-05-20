@@ -5,7 +5,7 @@ package com.bosch.nevonex.fcal.util;
 
 import com.bosch.nevonex.fcal.IBulkProcessor;
 import com.bosch.nevonex.fcal.IFcalFactory;
-import com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R;
+import com.bosch.nevonex.fcal.IGPS_INFO_R;
 
 import com.bosch.nevonex.fcal.impl.FcalPackage;
 
@@ -56,8 +56,8 @@ public class FcalAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseINTERNAL_GPS_DETAILEDINFO_R(IINTERNAL_GPS_DETAILEDINFO_R object) {
-			return createINTERNAL_GPS_DETAILEDINFO_RAdapter();
+		public Adapter caseGPS_INFO_R(IGPS_INFO_R object) {
+			return createGPS_INFO_RAdapter();
 		}
 
 		@Override
@@ -83,7 +83,7 @@ public class FcalAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-	public Adapter createINTERNAL_GPS_DETAILEDINFO_RAdapter() {
+	public Adapter createGPS_INFO_RAdapter() {
 		return null;
 	}
 

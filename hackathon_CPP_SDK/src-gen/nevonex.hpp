@@ -19,9 +19,10 @@
 #include <nevonex/customui.hpp>
 #include <nevonex/cloud.hpp>
 #include <nevonex/device2device.hpp>
-#include <nevonex/gpsplugin.hpp>
+#include <nevonex/gps_tc.hpp>
 #include <nevonex/implement.hpp>
 #include <nevonex/isopgn.hpp>
+#include <nevonex/platform_service.hpp>
 #include <nevonex/cloud.hpp>
 #include <nevonex/device2device.hpp>
 

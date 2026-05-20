@@ -4,7 +4,7 @@
  */
 
 #include "ApplicationInputData.hpp"
-#include <nevonex/gpsplugin/GPSPluginProvider.hpp>
+#include <nevonex/gps_tc/GPS_TCProvider.hpp>
 #include <nevonex/implement/ImplementProvider.hpp>
 #include <nevonex/isopgn/ISOPGNProvider.hpp>
 #include <ecore/EObject.hpp>
@@ -29,7 +29,7 @@ using namespace ::nevonex::log;
 
 // Default constructor
 ApplicationInputData::ApplicationInputData()
-    : m_gPSPluginProvider(0), m_implementProvider(0), m_iSOPGNProvider(0)
+    : m_gPS_TCProvider(0), m_implementProvider(0), m_iSOPGNProvider(0)
 {
 
     /*PROTECTED REGION ID(ApplicationInputData__ApplicationInputData) START*/
@@ -53,16 +53,16 @@ ApplicationInputData::~ApplicationInputData()
 
 // References
 
-::nevonex::gpsplugin::GPSPluginProvider_ptr ApplicationInputData::getGPSPluginProvider() const
+::nevonex::gps_tc::GPS_TCProvider_ptr ApplicationInputData::getGPS_TCProvider() const
 {
-    return m_gPSPluginProvider;
+    return m_gPS_TCProvider;
 }
 
-void ApplicationInputData::setGPSPluginProvider(
-        ::nevonex::gpsplugin::GPSPluginProvider_ptr _gPSPluginProvider)
+void ApplicationInputData::setGPS_TCProvider(
+        ::nevonex::gps_tc::GPS_TCProvider_ptr _gPS_TCProvider)
 {
 
-    m_gPSPluginProvider = _gPSPluginProvider;
+    m_gPS_TCProvider = _gPS_TCProvider;
 
 }
 

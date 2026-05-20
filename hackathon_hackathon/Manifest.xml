@@ -59,13 +59,13 @@
             
       <Interface isFilDependent="true" opt="false">
                 
-        <Name>GPSSensorPosition</Name>
+        <Name>Active_TC_GPS_source</Name>
                 
-        <Description>Internal GPS sensor information.&#13;Data members&#13;[&#13;    Latitude  -&gt; Default value -99.99&#13;    Longitude -&gt; Default value -99.99&#13;] &#13;If no GPS signal is available, the data members will be holding "null" value.&#13;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values.</Description>
+        <Description>Specifies if the active external GPS source is NMEA2000 or NMEA0183</Description>
                 
         <Access_Type>In</Access_Type>
                 
-        <Id>1984</Id>
+        <Id>3954</Id>
                 
         <OperationMode value="100">Cyclic</OperationMode>
                 
@@ -75,13 +75,29 @@
             
       <Interface isFilDependent="true" opt="false">
                 
-        <Name>internalGpsDetailedInfo</Name>
+        <Name>PositionofGpsSensor</Name>
                 
-        <Description>Internal GPS sensor information.&#13;&#13;Data members description:&#13;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth's equator, range:[-90, +90], unit: Degree&#13;&#13;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&#13;&#13;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&#13;&#13;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&#13;&#13;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &#13;&#13;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&#13;&#13;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&#13;&#13;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&#13;&#13;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&#13;&#13;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&#13;&#13;Speed -&gt; Speed of the GPS device, unit: km/hr&#13;&#13;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&#13;&#13;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&#13;&#13;&#13;&#13;&#13;Data members&#13;[&#13;    Latitude  -&gt; Default value -99.99&#13;    Longitude -&gt; Default value -99.99&#13;    Altitude  -&gt; Default value -99.99&#13;    PacketTime (Epoch time of GPS data reception) -&gt; Default value "0"&#13;    Horizontal Accuracy -&gt; Default value -99.99&#13;    Vertical Accuracy-&gt; Default value -99.99&#13;    Horizontal Dilution of Precision -&gt; Default value -99.99&#13;    Position Dilution of Precision -&gt; Default value -99.99&#13;    Vertical Dilution of Precision -&gt; Default value -99.99&#13;    Time Dilution of Precision -&gt; Default value -99.99&#13;    Speed -&gt; Default value -99.99&#13;    Course -&gt; Default value -99.99&#13;    Number of Satellites -&gt; Default value 0&#13;]&#13;&#13;If no GPS signal is available, the data members will be holding "null" value. &#13;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&#13;</Description>
+        <Description>Absolute position of GPS sensor.</Description>
                 
         <Access_Type>In</Access_Type>
                 
-        <Id>9288</Id>
+        <Id>123</Id>
+                
+        <OperationMode value="100">Cyclic</OperationMode>
+                
+        <Version>0.0.1</Version>
+              
+      </Interface>
+            
+      <Interface isFilDependent="true" opt="false">
+                
+        <Name>TcGpsInfo</Name>
+                
+        <Description>Gives GPS Quality, Altitude, Position and UTC time in one payload</Description>
+                
+        <Access_Type>In</Access_Type>
+                
+        <Id>3904</Id>
                 
         <OperationMode value="100">Cyclic</OperationMode>
                 

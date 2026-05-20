@@ -57,11 +57,13 @@ void NevonexPackage::_initPackage()
     getESubpackages().push_back(
             ::nevonex::device2device::Device2devicePackage::_getInstanceAndRemoveOwnership());
     getESubpackages().push_back(
-            ::nevonex::gpsplugin::GpspluginPackage::_getInstanceAndRemoveOwnership());
+            ::nevonex::gps_tc::Gps_tcPackage::_getInstanceAndRemoveOwnership());
     getESubpackages().push_back(
             ::nevonex::implement::ImplementPackage::_getInstanceAndRemoveOwnership());
     getESubpackages().push_back(
             ::nevonex::isopgn::IsopgnPackage::_getInstanceAndRemoveOwnership());
+    getESubpackages().push_back(
+            ::nevonex::platform_service::Platform_servicePackage::_getInstanceAndRemoveOwnership());
     getESubpackages().push_back(
             ::nevonex::cloud::CloudPackage::_getInstanceAndRemoveOwnership());
     getESubpackages().push_back(

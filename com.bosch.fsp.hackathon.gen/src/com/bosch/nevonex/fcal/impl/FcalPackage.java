@@ -5,7 +5,7 @@ package com.bosch.nevonex.fcal.impl;
 
 import com.bosch.nevonex.fcal.IBulkProcessor;
 import com.bosch.nevonex.fcal.IFcalFactory;
-import com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R;
+import com.bosch.nevonex.fcal.IGPS_INFO_R;
 import com.bosch.nevonex.fcal.impl.FcalFactory;
 
 import com.bosch.nevonex.types.impl.TypesPackage;
@@ -45,28 +45,22 @@ public class FcalPackage extends EPackageImpl {
 	public static final int I_FCAL_FACTORY_FEATURE_COUNT = 0;
 	public static final int I_FCAL_FACTORY_OPERATION_COUNT = 0;
 
-	public static final int INTERNAL_GPS_DETAILEDINFO_R = 3;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__LATITUDE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 0;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__LONGITUDE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 1;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__ALTITUDE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 2;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__TIME_STAMP = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 3;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__HORIZONTAL_ACCURACY = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 4;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__VERTICAL_ACCURACY = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 5;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__HORIZONTAL_DIL = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 6;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__POSITION_DIL = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 7;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__VERTICAL_DIL = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 8;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__TIME_DIL = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 9;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__SPEED = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 10;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__COURSE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 11;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R__NUMBER_OF_SATELLITES = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 12;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R_FEATURE_COUNT = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 13;
-	public static final int INTERNAL_GPS_DETAILEDINFO_R_OPERATION_COUNT = TypesPackage.I_ARRAY_TYPE_OPERATION_COUNT + 0;
+	public static final int GPS_INFO_R = 3;
+	public static final int GPS_INFO_R__LATITUDE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 0;
+	public static final int GPS_INFO_R__LONGITUDE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 1;
+	public static final int GPS_INFO_R__ALTITUDE = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 2;
+	public static final int GPS_INFO_R__POSITION_TIME = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 3;
+	public static final int GPS_INFO_R__HDOP = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 4;
+	public static final int GPS_INFO_R__PDOP = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 5;
+	public static final int GPS_INFO_R__NUMBER_OF_SATTELITES = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 6;
+	public static final int GPS_INFO_R_FEATURE_COUNT = TypesPackage.I_ARRAY_TYPE_FEATURE_COUNT + 7;
+	public static final int GPS_INFO_R_OPERATION_COUNT = TypesPackage.I_ARRAY_TYPE_OPERATION_COUNT + 0;
 
 
 	private EClass iBulkProcessorEClass = null;
 	private EClass bulkProcessorEClass = null;
 	private EClass iFcalFactoryEClass = null;
-	private EClass iNTERNAL_GPS_DETAILEDINFO_REClass = null;
+	private EClass gPS_INFO_REClass = null;
 
 	private static boolean isInited = false;
 	private boolean isCreated = false;
@@ -108,20 +102,14 @@ public class FcalPackage extends EPackageImpl {
 
 		iFcalFactoryEClass = createEClass(I_FCAL_FACTORY);
 
-		iNTERNAL_GPS_DETAILEDINFO_REClass = createEClass(INTERNAL_GPS_DETAILEDINFO_R);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__LATITUDE);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__LONGITUDE);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__ALTITUDE);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__TIME_STAMP);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__HORIZONTAL_ACCURACY);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__VERTICAL_ACCURACY);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__HORIZONTAL_DIL);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__POSITION_DIL);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__VERTICAL_DIL);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__TIME_DIL);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__SPEED);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__COURSE);
-		createEAttribute(iNTERNAL_GPS_DETAILEDINFO_REClass, INTERNAL_GPS_DETAILEDINFO_R__NUMBER_OF_SATELLITES);
+		gPS_INFO_REClass = createEClass(GPS_INFO_R);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__LATITUDE);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__LONGITUDE);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__ALTITUDE);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__POSITION_TIME);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__HDOP);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__PDOP);
+		createEAttribute(gPS_INFO_REClass, GPS_INFO_R__NUMBER_OF_SATTELITES);
 
 	}
 
@@ -145,119 +133,72 @@ public class FcalPackage extends EPackageImpl {
 		thePackage.iFcalFactoryEClass.setInstanceClassName("com.bosch.nevonex.fcal.IFcalFactory");
 		thePackage.iFcalFactoryEClass.setAbstract(true);
 		thePackage.iFcalFactoryEClass.setInterface(true);
-		thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.setName("INTERNAL_GPS_DETAILEDINFO_R");
-		thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.setInstanceClassName("com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R");
-		thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.setAbstract(false);
-		thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.setInterface(false);
-		thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getESuperTypes().add((EClass) TypesPackage.eINSTANCE.getIArrayType());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(0)).setName("latitude");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(0)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(0)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(0)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(0)).setDefaultValueLiteral("0.0");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(1)).setName("longitude");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(1)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(1)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(1)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(1)).setDefaultValueLiteral("0.0");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(2)).setName("altitude");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(2)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(2)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(2)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(2)).setDefaultValueLiteral("0.0");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(3)).setName("timeStamp");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(3)).setEType((EClassifier) EcorePackage.eINSTANCE.getEString());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(3)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(3)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(4)).setName("horizontalAccuracy");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(4)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(4)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(4)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(4)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(5)).setName("verticalAccuracy");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(5)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(5)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(5)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(5)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(6)).setName("horizontalDil");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(6)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(6)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(6)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(6)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(7)).setName("positionDil");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(7)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(7)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(7)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(7)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(8)).setName("verticalDil");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(8)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(8)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(8)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(8)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(9)).setName("timeDil");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(9)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(9)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(9)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(9)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(10)).setName("speed");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(10)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(10)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(10)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(10)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(11)).setName("course");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(11)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(11)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(11)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(11)).setDefaultValueLiteral("0.0f");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(12)).setName("numberOfSatellites");
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(12)).setEType((EClassifier) EcorePackage.eINSTANCE.getEInt());
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(12)).setUpperBound(1);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(12)).setLowerBound(0);
-		((EAttribute) thePackage.iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeatures().get(12)).setDefaultValueLiteral("0");
+		thePackage.gPS_INFO_REClass.setName("GPS_INFO_R");
+		thePackage.gPS_INFO_REClass.setInstanceClassName("com.bosch.nevonex.fcal.IGPS_INFO_R");
+		thePackage.gPS_INFO_REClass.setAbstract(false);
+		thePackage.gPS_INFO_REClass.setInterface(false);
+		thePackage.gPS_INFO_REClass.getESuperTypes().add((EClass) TypesPackage.eINSTANCE.getIArrayType());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(0)).setName("latitude");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(0)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(0)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(0)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(0)).setDefaultValueLiteral("0.0");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(1)).setName("longitude");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(1)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(1)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(1)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(1)).setDefaultValueLiteral("0.0");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(2)).setName("altitude");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(2)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(2)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(2)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(2)).setDefaultValueLiteral("0.0");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(3)).setName("positionTime");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(3)).setEType((EClassifier) EcorePackage.eINSTANCE.getEDouble());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(3)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(3)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(3)).setDefaultValueLiteral("0.0");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(4)).setName("hDOP");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(4)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(4)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(4)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(4)).setDefaultValueLiteral("0.0f");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(5)).setName("pDOP");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(5)).setEType((EClassifier) EcorePackage.eINSTANCE.getEFloat());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(5)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(5)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(5)).setDefaultValueLiteral("0.0f");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(6)).setName("numberOfSattelites");
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(6)).setEType((EClassifier) EcorePackage.eINSTANCE.getEInt());
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(6)).setUpperBound(1);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(6)).setLowerBound(0);
+		((EAttribute) thePackage.gPS_INFO_REClass.getEStructuralFeatures().get(6)).setDefaultValueLiteral("0");
 	}
 
 	public EClass getIBulkProcessor() { return iBulkProcessorEClass; }
 	public EClass getBulkProcessor() { return bulkProcessorEClass; }
 	public EClass getIFcalFactory() { return iFcalFactoryEClass; }
-	public EClass getINTERNAL_GPS_DETAILEDINFO_R() { return iNTERNAL_GPS_DETAILEDINFO_REClass; }
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_Latitude() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("latitude");
+	public EClass getGPS_INFO_R() { return gPS_INFO_REClass; }
+	public EAttribute getGPS_INFO_R_Latitude() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("latitude");
 	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_Longitude() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("longitude");
+	public EAttribute getGPS_INFO_R_Longitude() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("longitude");
 	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_Altitude() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("altitude");
+	public EAttribute getGPS_INFO_R_Altitude() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("altitude");
 	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_TimeStamp() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("timeStamp");
+	public EAttribute getGPS_INFO_R_PositionTime() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("positionTime");
 	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_HorizontalAccuracy() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("horizontalAccuracy");
+	public EAttribute getGPS_INFO_R_HDOP() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("hDOP");
 	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_VerticalAccuracy() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("verticalAccuracy");
+	public EAttribute getGPS_INFO_R_PDOP() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("pDOP");
 	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_HorizontalDil() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("horizontalDil");
-	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_PositionDil() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("positionDil");
-	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_VerticalDil() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("verticalDil");
-	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_TimeDil() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("timeDil");
-	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_Speed() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("speed");
-	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_Course() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("course");
-	}
-	public EAttribute getINTERNAL_GPS_DETAILEDINFO_R_NumberOfSatellites() {
-		return (EAttribute) iNTERNAL_GPS_DETAILEDINFO_REClass.getEStructuralFeature("numberOfSatellites");
+	public EAttribute getGPS_INFO_R_NumberOfSattelites() {
+		return (EAttribute) gPS_INFO_REClass.getEStructuralFeature("numberOfSattelites");
 	}
 	public EOperation getIBulkProcessor__ExecuteBulkOperations() {
 		return iBulkProcessorEClass.getEOperations().get(0);
@@ -271,7 +212,7 @@ public class FcalPackage extends EPackageImpl {
 		public static final EClass I_BULK_PROCESSOR = eINSTANCE.getIBulkProcessor();
 		public static final EClass BULK_PROCESSOR = eINSTANCE.getBulkProcessor();
 		public static final EClass I_FCAL_FACTORY = eINSTANCE.getIFcalFactory();
-		public static final EClass INTERNAL_GPS_DETAILEDINFO_R = eINSTANCE.getINTERNAL_GPS_DETAILEDINFO_R();
+		public static final EClass GPS_INFO_R = eINSTANCE.getGPS_INFO_R();
 	}
 
 } //FcalPackage

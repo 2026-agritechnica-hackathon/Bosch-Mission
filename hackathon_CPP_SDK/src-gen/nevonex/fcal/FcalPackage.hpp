@@ -30,58 +30,40 @@ namespace nevonex
 
         static const int BULKPROCESSOR = 0;
 
-        static const int IBULKPROCESSOR = 1;
+        static const int GPS_INFO_R = 1;
 
-        static const int IFCALFACTORY = 2;
+        static const int IBULKPROCESSOR = 2;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R = 3;
+        static const int IFCALFACTORY = 3;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__LATITUDE = 0;
+        static const int GPS_INFO_R__LATITUDE = 0;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__LONGITUDE = 1;
+        static const int GPS_INFO_R__LONGITUDE = 1;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__ALTITUDE = 2;
+        static const int GPS_INFO_R__ALTITUDE = 2;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__TIMESTAMP = 3;
+        static const int GPS_INFO_R__POSITIONTIME = 3;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__HORIZONTALACCURACY = 4;
+        static const int GPS_INFO_R__HDOP = 4;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__VERTICALACCURACY = 5;
+        static const int GPS_INFO_R__PDOP = 5;
 
-        static const int INTERNAL_GPS_DETAILEDINFO_R__HORIZONTALDIL = 6;
-
-        static const int INTERNAL_GPS_DETAILEDINFO_R__POSITIONDIL = 7;
-
-        static const int INTERNAL_GPS_DETAILEDINFO_R__VERTICALDIL = 8;
-
-        static const int INTERNAL_GPS_DETAILEDINFO_R__TIMEDIL = 9;
-
-        static const int INTERNAL_GPS_DETAILEDINFO_R__SPEED = 10;
-
-        static const int INTERNAL_GPS_DETAILEDINFO_R__COURSE = 11;
-
-        static const int INTERNAL_GPS_DETAILEDINFO_R__NUMBEROFSATELLITES = 12;
+        static const int GPS_INFO_R__NUMBEROFSATTELITES = 6;
 
         // EClassifiers methods
 
         virtual ::ecore::EClass_ptr getBulkProcessor();
-        virtual ::ecore::EClass_ptr getINTERNAL_GPS_DETAILEDINFO_R();
+        virtual ::ecore::EClass_ptr getGPS_INFO_R();
 
         // EStructuralFeatures methods
 
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__latitude();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__longitude();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__altitude();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__timeStamp();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__horizontalAccuracy();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__verticalAccuracy();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__horizontalDil();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__positionDil();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__verticalDil();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__timeDil();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__speed();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__course();
-        virtual ::ecore::EAttribute_ptr getINTERNAL_GPS_DETAILEDINFO_R__numberOfSatellites();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__latitude();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__longitude();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__altitude();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__positionTime();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__hDOP();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__pDOP();
+        virtual ::ecore::EAttribute_ptr getGPS_INFO_R__numberOfSattelites();
 
     protected:
 
@@ -94,7 +76,7 @@ namespace nevonex
 
         ::ecore::EClass_ptr m_BulkProcessorEClass;
 
-        ::ecore::EClass_ptr m_INTERNAL_GPS_DETAILEDINFO_REClass;
+        ::ecore::EClass_ptr m_GPS_INFO_REClass;
 
         // EEnuminstances 
 
@@ -106,31 +88,19 @@ namespace nevonex
 
         // EStructuralFeatures instances
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__latitude;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__latitude;
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__longitude;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__longitude;
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__altitude;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__altitude;
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__timeStamp;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__positionTime;
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__horizontalAccuracy;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__hDOP;
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__verticalAccuracy;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__pDOP;
 
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__horizontalDil;
-
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__positionDil;
-
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__verticalDil;
-
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__timeDil;
-
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__speed;
-
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__course;
-
-        ::ecore::EAttribute_ptr m_INTERNAL_GPS_DETAILEDINFO_R__numberOfSatellites;
+        ::ecore::EAttribute_ptr m_GPS_INFO_R__numberOfSattelites;
 
     };
 

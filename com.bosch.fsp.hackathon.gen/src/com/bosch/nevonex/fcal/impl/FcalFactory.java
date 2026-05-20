@@ -5,7 +5,7 @@ package com.bosch.nevonex.fcal.impl;
 
 import com.bosch.nevonex.fcal.IFcalFactory;
 import com.bosch.nevonex.fcal.IBulkProcessor;
-import com.bosch.nevonex.fcal.IINTERNAL_GPS_DETAILEDINFO_R;
+import com.bosch.nevonex.fcal.IGPS_INFO_R;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -42,8 +42,8 @@ public class FcalFactory extends EFactoryImpl implements IFcalFactory {
 		switch (eClass.getClassifierID()) {
 		case FcalPackage.BULK_PROCESSOR:
 			return createBulkProcessor();
-		case FcalPackage.INTERNAL_GPS_DETAILEDINFO_R:
-			return createINTERNAL_GPS_DETAILEDINFO_R();
+		case FcalPackage.GPS_INFO_R:
+			return createGPS_INFO_R();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -54,9 +54,9 @@ public class FcalFactory extends EFactoryImpl implements IFcalFactory {
 		return bulkProcessor;
 	}
 
-	public IINTERNAL_GPS_DETAILEDINFO_R createINTERNAL_GPS_DETAILEDINFO_R() {
-		INTERNAL_GPS_DETAILEDINFO_R iNTERNAL_GPS_DETAILEDINFO_R = new INTERNAL_GPS_DETAILEDINFO_R();
-		return iNTERNAL_GPS_DETAILEDINFO_R;
+	public IGPS_INFO_R createGPS_INFO_R() {
+		GPS_INFO_R gPS_INFO_R = new GPS_INFO_R();
+		return gPS_INFO_R;
 	}
 
 	public FcalPackage getFcalPackage() {

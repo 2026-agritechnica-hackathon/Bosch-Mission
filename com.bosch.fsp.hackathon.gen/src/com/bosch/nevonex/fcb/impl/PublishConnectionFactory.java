@@ -208,10 +208,11 @@ public class PublishConnectionFactory extends EObjectImpl implements IPublishCon
 
     private void initMappings() {
         this.topicMap = new HashMap<>();
-		topicMap.put("/1/+", "GPSPlugin.machineconnect.sub");
-		topicMap.put("/0/+", "GPSPlugin.machinedata.sub");
-		topicMap.put("/1984", "GPSPlugin.GPSSensorPosition.sub");
-		topicMap.put("/9288", "GPSPlugin.internalGpsDetailedInfo.sub");
+		topicMap.put("/1/+", "GPS_TC.machineconnect.sub");
+		topicMap.put("/0/+", "GPS_TC.machinedata.sub");
+		topicMap.put("/3954", "GPS_TC.Active_TC_GPS_source.sub");
+		topicMap.put("/123", "GPS_TC.PositionofGpsSensor.sub");
+		topicMap.put("/3904", "GPS_TC.TcGpsInfo.sub");
 		topicMap.put("/1/+", "Implement.machineconnect.sub");
 		topicMap.put("/0/+", "Implement.machinedata.sub");
 		topicMap.put("/350", "Implement.LifetimeWorkingHours.sub");
@@ -247,7 +248,7 @@ public class PublishConnectionFactory extends EObjectImpl implements IPublishCon
 		prefixMap.put("FCAL2FIL_Publish", "fek");
 
         this.machinePathMap = new HashMap<>();
-		machinePathMap.put("GPSPlugin", "GPSPlugin");
+		machinePathMap.put("GPS_TC", "GPS_TC");
 		machinePathMap.put("Implement", "Implement");
 		machinePathMap.put("ISOPGN", "ISOPGN");
 		machinePathMap.put("Platform_Service", "Platform_Service");

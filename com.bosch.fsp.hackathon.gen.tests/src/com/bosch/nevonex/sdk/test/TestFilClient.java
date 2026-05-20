@@ -55,7 +55,7 @@ public class TestFilClient implements MqttCallback, MqttCallbackExtended {
   public static String payload = "";
   
   
-  public static final Set<String> interfacesSet = new HashSet<>(Arrays.asList(new String[] {"GPSPlugin", "Implement", "ISOPGN"}));
+  public static final Set<String> interfacesSet = new HashSet<>(Arrays.asList(new String[] {"GPS_TC", "Implement", "ISOPGN"}));
    /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    *
@@ -190,49 +190,73 @@ public class TestFilClient implements MqttCallback, MqttCallbackExtended {
     } 
 
     
-    public void publishGPSPlugingPSSensorPosition(String interfaceAddress, Object value, String index, String parentIndex) throws Exception {
+    public void publishGPS_TCactive_TC_GPS_source(String interfaceAddress, Object value, String index, String parentIndex) throws Exception {
         String address = interfaceAddress.split("/")[1];
-        JsonObject gPSSensorPosition = new JsonObject();
+        JsonObject active_TC_GPS_source = new JsonObject();
         if (value instanceof AbsolutePosition) {
             AbsolutePosition gpsposition = (AbsolutePosition) value;
             JsonArray gps = new JsonArray();
             gps.add(gpsposition.getLongitude());
             gps.add(gpsposition.getLatitude());
-            gPSSensorPosition.add(index, gps);
+            active_TC_GPS_source.add(index, gps);
         } else if (value instanceof com.bosch.nevonex.types.IArrayType) {
 	        	Object[] values = ((com.bosch.nevonex.types.IArrayType) value).getArrayValues();
-	        	gPSSensorPosition.add(index,  new Gson().toJsonTree(values, Object.class));
+	        	active_TC_GPS_source.add(index,  new Gson().toJsonTree(values, Object.class));
         } else {
-            gPSSensorPosition.add(index, new Gson().toJsonTree(value, Object.class));
+            active_TC_GPS_source.add(index, new Gson().toJsonTree(value, Object.class));
         }
-        JsonObject gpsplugin = new JsonObject();
-        gpsplugin.add("gpsplugin", gPSSensorPosition);     
+        JsonObject gps_tc = new JsonObject();
+        gps_tc.add("gps_tc", active_TC_GPS_source);     
         JsonObject root = new JsonObject();
-        root.add("PL", gpsplugin);
+        root.add("PL", gps_tc);
         root.addProperty("TS", System.currentTimeMillis());
         publish("fek/" + address, root.toString(), 2, false);
         FCALLogs.getInstance().log.info("publish to fek/" + address + " Payload : " + root.toString());
     }
     
-    public void publishGPSPlugininternalGpsDetailedInfo(String interfaceAddress, Object value, String index, String parentIndex) throws Exception {
+    public void publishGPS_TCpositionofGpsSensor(String interfaceAddress, Object value, String index, String parentIndex) throws Exception {
         String address = interfaceAddress.split("/")[1];
-        JsonObject internalGpsDetailedInfo = new JsonObject();
+        JsonObject positionofGpsSensor = new JsonObject();
         if (value instanceof AbsolutePosition) {
             AbsolutePosition gpsposition = (AbsolutePosition) value;
             JsonArray gps = new JsonArray();
             gps.add(gpsposition.getLongitude());
             gps.add(gpsposition.getLatitude());
-            internalGpsDetailedInfo.add(index, gps);
+            positionofGpsSensor.add(index, gps);
         } else if (value instanceof com.bosch.nevonex.types.IArrayType) {
 	        	Object[] values = ((com.bosch.nevonex.types.IArrayType) value).getArrayValues();
-	        	internalGpsDetailedInfo.add(index,  new Gson().toJsonTree(values, Object.class));
+	        	positionofGpsSensor.add(index,  new Gson().toJsonTree(values, Object.class));
         } else {
-            internalGpsDetailedInfo.add(index, new Gson().toJsonTree(value, Object.class));
+            positionofGpsSensor.add(index, new Gson().toJsonTree(value, Object.class));
         }
-        JsonObject gpsplugin = new JsonObject();
-        gpsplugin.add("gpsplugin", internalGpsDetailedInfo);     
+        JsonObject gps_tc = new JsonObject();
+        gps_tc.add("gps_tc", positionofGpsSensor);     
         JsonObject root = new JsonObject();
-        root.add("PL", gpsplugin);
+        root.add("PL", gps_tc);
+        root.addProperty("TS", System.currentTimeMillis());
+        publish("fek/" + address, root.toString(), 2, false);
+        FCALLogs.getInstance().log.info("publish to fek/" + address + " Payload : " + root.toString());
+    }
+    
+    public void publishGPS_TCtcGpsInfo(String interfaceAddress, Object value, String index, String parentIndex) throws Exception {
+        String address = interfaceAddress.split("/")[1];
+        JsonObject tcGpsInfo = new JsonObject();
+        if (value instanceof AbsolutePosition) {
+            AbsolutePosition gpsposition = (AbsolutePosition) value;
+            JsonArray gps = new JsonArray();
+            gps.add(gpsposition.getLongitude());
+            gps.add(gpsposition.getLatitude());
+            tcGpsInfo.add(index, gps);
+        } else if (value instanceof com.bosch.nevonex.types.IArrayType) {
+	        	Object[] values = ((com.bosch.nevonex.types.IArrayType) value).getArrayValues();
+	        	tcGpsInfo.add(index,  new Gson().toJsonTree(values, Object.class));
+        } else {
+            tcGpsInfo.add(index, new Gson().toJsonTree(value, Object.class));
+        }
+        JsonObject gps_tc = new JsonObject();
+        gps_tc.add("gps_tc", tcGpsInfo);     
+        JsonObject root = new JsonObject();
+        root.add("PL", gps_tc);
         root.addProperty("TS", System.currentTimeMillis());
         publish("fek/" + address, root.toString(), 2, false);
         FCALLogs.getInstance().log.info("publish to fek/" + address + " Payload : " + root.toString());
@@ -577,11 +601,14 @@ public class TestFilClient implements MqttCallback, MqttCallbackExtended {
     
     public void publishValue(String interfaceAdress, Object value, String index, String parentIndex) throws Exception {
         switch (interfaceAdress) {
-        case "GPSPlugin/1984":
-           factory.publishGPSPlugingPSSensorPosition(interfaceAdress, value, index, parentIndex);
+        case "GPS_TC/3954":
+           factory.publishGPS_TCactive_TC_GPS_source(interfaceAdress, value, index, parentIndex);
            break;
-        case "GPSPlugin/9288":
-           factory.publishGPSPlugininternalGpsDetailedInfo(interfaceAdress, value, index, parentIndex);
+        case "GPS_TC/123":
+           factory.publishGPS_TCpositionofGpsSensor(interfaceAdress, value, index, parentIndex);
+           break;
+        case "GPS_TC/3904":
+           factory.publishGPS_TCtcGpsInfo(interfaceAdress, value, index, parentIndex);
            break;
         case "Implement/350":
            factory.publishImplementlifetimeWorkingHours(interfaceAdress, value, index, parentIndex);

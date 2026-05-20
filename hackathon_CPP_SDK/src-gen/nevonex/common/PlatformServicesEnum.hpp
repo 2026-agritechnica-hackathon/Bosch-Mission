@@ -15,20 +15,20 @@ namespace nevonex
 
         enum class PlatformServicesEnum
         {
-             Cloud_Download = 0 /* Cloud_Download*/
-            ,Cloud_Upload = 1 /* Cloud_Upload*/
+             CLOUD_DOWNLOAD = 0 /* CLOUD_DOWNLOAD*/
+            ,CLOUD_UPLOAD = 1 /* CLOUD_UPLOAD*/
         };
 // PlatformServicesEnum Values array.
         static const PlatformServicesEnum PlatformServicesEnum_Values[] =
-        { PlatformServicesEnum::Cloud_Download, PlatformServicesEnum::Cloud_Upload };
+        { PlatformServicesEnum::CLOUD_DOWNLOAD, PlatformServicesEnum::CLOUD_UPLOAD };
         inline const std::string getLiteral(PlatformServicesEnum e)
         {
             switch (e)
             {
-            case PlatformServicesEnum::Cloud_Download:
-                return "Cloud_Download";
-            case PlatformServicesEnum::Cloud_Upload:
-                return "Cloud_Upload";
+            case PlatformServicesEnum::CLOUD_DOWNLOAD:
+                return "CLOUD_DOWNLOAD";
+            case PlatformServicesEnum::CLOUD_UPLOAD:
+                return "CLOUD_UPLOAD";
             }
             return "";
         }

@@ -29,19 +29,27 @@
   <Dependencies>
     <Interfaces>
       <Interface isFilDependent="true" opt="false">
-        <Name>GPSSensorPosition</Name>
-        <Description>Internal GPS sensor information.&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;] &amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value.&amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values.</Description>
+        <Name>Active_TC_GPS_source</Name>
+        <Description>Specifies if the active external GPS source is NMEA2000 or NMEA0183</Description>
         <Access_Type>In</Access_Type>
-        <Id>1984</Id>
-        <OperationMode value="100">Cyclic</OperationMode>
+        <Id>3954</Id>
+        <OperationMode value="1">Cyclic</OperationMode>
         <Version>0.0.1</Version>
       </Interface>
       <Interface isFilDependent="true" opt="false">
-        <Name>internalGpsDetailedInfo</Name>
-        <Description>Internal GPS sensor information.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members description:&amp;#xD;&amp;#xA;Latitude -&gt; Latitude is the angular distance of a place North or South of the earth&apos;s equator, range:[-90, +90], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Longitude -&gt; Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Altitude -&gt; How high or low the device/location is relation to the sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeStamp -&gt; Epoch time when the GPS data transmitted from satellite, unit: milliseconds&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalAccuracy -&gt; Measure of how close a reported position is accurate on earth surface, unit: meters              &amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalAccuracy -&gt; Measure of how close a reported position is accurate to sea level, unit: meters&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;HorizontalDil -&gt; Horizontal Dilution of precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;PositionDil -&gt; Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VerticalDil -&gt; Vertical Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;TimeDil -&gt; Time Dilution of Precision, range:[1, infinity]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Speed -&gt; Speed of the GPS device, unit: km/hr&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Course -&gt; Direction in which the device is heading to, range:[0, 359.99], unit: Degree&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;NumberOfSatellites -&gt; Number of satellites used in determining GPS fix&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Data members&amp;#xD;&amp;#xA;[&amp;#xD;&amp;#xA;    Latitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Longitude -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Altitude  -&gt; Default value -99.99&amp;#xD;&amp;#xA;    PacketTime (Epoch time of GPS data reception) -&gt; Default value &quot;0&quot;&amp;#xD;&amp;#xA;    Horizontal Accuracy -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Accuracy-&gt; Default value -99.99&amp;#xD;&amp;#xA;    Horizontal Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Position Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Vertical Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Time Dilution of Precision -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Speed -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Course -&gt; Default value -99.99&amp;#xD;&amp;#xA;    Number of Satellites -&gt; Default value 0&amp;#xD;&amp;#xA;]&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;If no GPS signal is available, the data members will be holding &quot;null&quot; value. &amp;#xD;&amp;#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&amp;#xD;&amp;#xA;</Description>
+        <Name>PositionofGpsSensor</Name>
+        <Description>Absolute position of GPS sensor.</Description>
         <Access_Type>In</Access_Type>
-        <Id>9288</Id>
-        <OperationMode value="100">Cyclic</OperationMode>
+        <Id>123</Id>
+        <OperationMode value="1">Cyclic</OperationMode>
+        <Version>0.0.1</Version>
+      </Interface>
+      <Interface isFilDependent="true" opt="false">
+        <Name>TcGpsInfo</Name>
+        <Description>Gives GPS Quality, Altitude, Position and UTC time in one payload</Description>
+        <Access_Type>In</Access_Type>
+        <Id>3904</Id>
+        <OperationMode value="1">Cyclic</OperationMode>
         <Version>0.0.1</Version>
       </Interface>
       <Interface isFilDependent="true" opt="false">

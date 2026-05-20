@@ -1,9 +1,26 @@
 {"interfaces": [
   {
-    "Device Element": "GPSPlugin",
-    "Description": "Internal GPS sensor information.&#xD;&#xA;Data members&#xD;&#xA;[&#xD;&#xA;    Latitude  -> Default value -99.99&#xD;&#xA;    Longitude -> Default value -99.99&#xD;&#xA;] &#xD;&#xA;If no GPS signal is available, the data members will be holding \"null\" value.&#xD;&#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will have the default values.",
+    "Device Element": "GPS_TC",
+    "Description": "Specifies if the active external GPS source is NMEA2000 or NMEA0183",
     "Update Rate": "Cyclic",
-    "Device Class": "GPSPlugin",
+    "Device Class": "GPS_TC",
+    "Parameters": {
+      "Unit": "-",
+      "Datatype": "enum"
+    },
+    "Version": "0.0.1",
+    "Standard DDI": "",
+    "Access": "Read",
+    "Standard": "NEVONEX",
+    "Machine Variant": "",
+    "ID": "3954",
+    "Name": "Active_TC_GPS_source"
+  },
+  {
+    "Device Element": "GPS_TC",
+    "Description": "Absolute position of GPS sensor.",
+    "Update Rate": "Cyclic",
+    "Device Class": "GPS_TC",
     "Parameters": {
       "Unit": "-",
       "Datatype": "GPS"
@@ -13,25 +30,25 @@
     "Access": "Read",
     "Standard": "NEVONEX",
     "Machine Variant": "",
-    "ID": "1984",
-    "Name": "GPSSensorPosition"
+    "ID": "123",
+    "Name": "PositionofGpsSensor"
   },
   {
-    "Device Element": "GPSPlugin",
-    "Description": "Internal GPS sensor information.&#xD;&#xA;&#xD;&#xA;Data members description:&#xD;&#xA;Latitude -> Latitude is the angular distance of a place North or South of the earth's equator, range:[-90, +90], unit: Degree&#xD;&#xA;&#xD;&#xA;Longitude -> Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180], unit: Degree&#xD;&#xA;&#xD;&#xA;Altitude -> How high or low the device/location is relation to the sea level, unit: meters&#xD;&#xA;&#xD;&#xA;TimeStamp -> Epoch time when the GPS data transmitted from satellite, unit: milliseconds&#xD;&#xA;&#xD;&#xA;HorizontalAccuracy -> Measure of how close a reported position is accurate on earth surface, unit: meters              &#xD;&#xA;&#xD;&#xA;VerticalAccuracy -> Measure of how close a reported position is accurate to sea level, unit: meters&#xD;&#xA;&#xD;&#xA;HorizontalDil -> Horizontal Dilution of precision, range:[1, infinity]&#xD;&#xA;&#xD;&#xA;PositionDil -> Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&#xD;&#xA;&#xD;&#xA;VerticalDil -> Vertical Dilution of Precision, range:[1, infinity]&#xD;&#xA;&#xD;&#xA;TimeDil -> Time Dilution of Precision, range:[1, infinity]&#xD;&#xA;&#xD;&#xA;Speed -> Speed of the GPS device, unit: km/hr&#xD;&#xA;&#xD;&#xA;Course -> Direction in which the device is heading to, range:[0, 359.99], unit: Degree&#xD;&#xA;&#xD;&#xA;NumberOfSatellites -> Number of satellites used in determining GPS fix&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Data members&#xD;&#xA;[&#xD;&#xA;    Latitude  -> Default value -99.99&#xD;&#xA;    Longitude -> Default value -99.99&#xD;&#xA;    Altitude  -> Default value -99.99&#xD;&#xA;    PacketTime (Epoch time of GPS data reception) -> Default value \"0\"&#xD;&#xA;    Horizontal Accuracy -> Default value -99.99&#xD;&#xA;    Vertical Accuracy-> Default value -99.99&#xD;&#xA;    Horizontal Dilution of Precision -> Default value -99.99&#xD;&#xA;    Position Dilution of Precision -> Default value -99.99&#xD;&#xA;    Vertical Dilution of Precision -> Default value -99.99&#xD;&#xA;    Time Dilution of Precision -> Default value -99.99&#xD;&#xA;    Speed -> Default value -99.99&#xD;&#xA;    Course -> Default value -99.99&#xD;&#xA;    Number of Satellites -> Default value 0&#xD;&#xA;]&#xD;&#xA;&#xD;&#xA;If no GPS signal is available, the data members will be holding \"null\" value. &#xD;&#xA;If GPS signal is available, and some data members are not available from the GPS sensor, then those data members will be taking default values.&#xD;&#xA;",
+    "Device Element": "GPS_TC",
+    "Description": "Gives GPS Quality, Altitude, Position and UTC time in one payload",
     "Update Rate": "Cyclic",
-    "Device Class": "GPSPlugin",
+    "Device Class": "GPS_TC",
     "Parameters": {
       "Unit": "-",
       "Datatype": "array"
     },
     "Version": "0.0.1",
-    "Standard DDI": "-",
+    "Standard DDI": "",
     "Access": "Read",
     "Standard": "NEVONEX",
     "Machine Variant": "",
-    "ID": "9288",
-    "Name": "internalGpsDetailedInfo"
+    "ID": "3904",
+    "Name": "TcGpsInfo"
   },
   {
     "Device Element": "Implement",

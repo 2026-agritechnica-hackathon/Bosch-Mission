@@ -8,7 +8,7 @@
 
 #include <AppMain/ApplicationInputData.hpp>
 #include <AppMain/IController.hpp>
-#include <nevonex/gpsplugin/GPSPluginProvider.hpp>
+#include <nevonex/gps_tc/GPS_TCProvider.hpp>
 #include <nevonex/implement/ImplementProvider.hpp>
 #include <nevonex/isopgn/ISOPGNProvider.hpp>
 #include <ecore/EObject.hpp>
@@ -46,7 +46,7 @@ using namespace ::nevonex::fcal;
 using namespace ::nevonex::common;
 using namespace ::nevonex::types;
 
-using namespace ::nevonex::gpsplugin;
+using namespace ::nevonex::gps_tc;
 
 using namespace ::nevonex::implement;
 
@@ -70,13 +70,13 @@ void MainController::run()
     {
         // Write your application logic by enabling the protected regions.
 
-        using namespace ::nevonex::gpsplugin;
+        using namespace ::nevonex::gps_tc;
 
-        GPSPluginProvider_ptr gPSPluginProvider =
-                getGPSPluginProvider();
-        if (gPSPluginProvider != nullptr)
+        GPS_TCProvider_ptr gPS_TCProvider =
+                getGPS_TCProvider();
+        if (gPS_TCProvider != nullptr)
         {
-            /*PROTECTED REGION ID(MainControllerRun_GPSPluginProviderInnerMethod) START*/
+            /*PROTECTED REGION ID(MainControllerRun_GPS_TCProviderInnerMethod) START*/
 // Please, enable the protected region if you add manually written code.
 // To do this, add the keyword ENABLED before START.
 /*PROTECTED REGION END*/

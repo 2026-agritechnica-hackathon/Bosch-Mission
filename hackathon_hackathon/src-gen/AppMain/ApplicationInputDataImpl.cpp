@@ -6,7 +6,7 @@
 #include "ApplicationInputData.hpp"
 #include <stdexcept>
 
-#include <nevonex/gpsplugin/GPSPluginProvider.hpp>
+#include <nevonex/gps_tc/GPS_TCProvider.hpp>
 #include <nevonex/implement/ImplementProvider.hpp>
 #include <nevonex/isopgn/ISOPGNProvider.hpp>
 #include <ecore/EObject.hpp>

@@ -6,9 +6,10 @@
 #include "MainController.hpp"
 #include <AppMain/ApplicationInputData.hpp>
 #include <AppMain/IController.hpp>
-#include <nevonex/gpsplugin/GPSPluginProvider.hpp>
+#include <nevonex/gps_tc/GPS_TCProvider.hpp>
 #include <nevonex/implement/ImplementProvider.hpp>
 #include <nevonex/isopgn/ISOPGNProvider.hpp>
+#include <nevonex/platform_service/Platform_ServiceProvider.hpp>
 #include <ecore/EObject.hpp>
 #include <ecore/EClass.hpp>
 #include <ecorecpp/mapping.hpp>

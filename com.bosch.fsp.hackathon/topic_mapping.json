@@ -1,8 +1,9 @@
 {"topic_mapping": {
-  "GPSPlugin.machineconnect.sub": "/1/+",
-  "GPSPlugin.machinedata.sub": "/0/+",
-  "GPSPlugin.gPSSensorPosition.sub": "/1984",
-  "GPSPlugin.internalGpsDetailedInfo.sub": "/9288",
+  "GPS_TC.machineconnect.sub": "/1/+",
+  "GPS_TC.machinedata.sub": "/0/+",
+  "GPS_TC.active_TC_GPS_source.sub": "/3954",
+  "GPS_TC.positionofGpsSensor.sub": "/123",
+  "GPS_TC.tcGpsInfo.sub": "/3904",
   "Implement.machineconnect.sub": "/1/+",
   "Implement.machinedata.sub": "/0/+",
   "Implement.lifetimeWorkingHours.sub": "/350",

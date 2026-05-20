@@ -23,9 +23,10 @@
 #include <nevonex/customui_forward.hpp>
 #include <nevonex/cloud_forward.hpp>
 #include <nevonex/device2device_forward.hpp>
-#include <nevonex/gpsplugin_forward.hpp>
+#include <nevonex/gps_tc_forward.hpp>
 #include <nevonex/implement_forward.hpp>
 #include <nevonex/isopgn_forward.hpp>
+#include <nevonex/platform_service_forward.hpp>
 #include <nevonex/cloud_forward.hpp>
 #include <nevonex/device2device_forward.hpp>
 

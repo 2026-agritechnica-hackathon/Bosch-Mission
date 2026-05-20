@@ -15,19 +15,19 @@ namespace nevonex
 
         enum class ProviderEnum
         {
-             GPSPluginProvider = 0 /* GPSPluginProvider*/
+             GPS_TCProvider = 0 /* GPS_TCProvider*/
             ,ImplementProvider = 1 /* ImplementProvider*/
             ,ISOPGNProvider = 2 /* ISOPGNProvider*/
         };
 // ProviderEnum Values array.
         static const ProviderEnum ProviderEnum_Values[] =
-        { ProviderEnum::GPSPluginProvider, ProviderEnum::ImplementProvider, ProviderEnum::ISOPGNProvider };
+        { ProviderEnum::GPS_TCProvider, ProviderEnum::ImplementProvider, ProviderEnum::ISOPGNProvider };
         inline const std::string getLiteral(ProviderEnum e)
         {
             switch (e)
             {
-            case ProviderEnum::GPSPluginProvider:
-                return "GPSPluginProvider";
+            case ProviderEnum::GPS_TCProvider:
+                return "GPS_TCProvider";
             case ProviderEnum::ImplementProvider:
                 return "ImplementProvider";
             case ProviderEnum::ISOPGNProvider:

@@ -9,14 +9,15 @@
 #include <nevonex/NevonexFactory.hpp>
 #include <nevonex/common/CommonPackage.hpp>
 #include <nevonex/common/CommonFactory.hpp>
-#include <nevonex/common/PlatformServicesEnum.hpp>
 #include <nevonex/types/IMachineProvider.hpp>
-#include <nevonex/gpsplugin/GpspluginPackage.hpp>
-#include <nevonex/gpsplugin/GpspluginFactory.hpp>
+#include <nevonex/gps_tc/Gps_tcPackage.hpp>
+#include <nevonex/gps_tc/Gps_tcFactory.hpp>
 #include <nevonex/implement/ImplementPackage.hpp>
 #include <nevonex/implement/ImplementFactory.hpp>
 #include <nevonex/isopgn/IsopgnPackage.hpp>
 #include <nevonex/isopgn/IsopgnFactory.hpp>
+#include <nevonex/platform_service/Platform_servicePackage.hpp>
+#include <nevonex/platform_service/Platform_serviceFactory.hpp>
 #include <nevonex/customui/UIWebServiceProvider.hpp>
 
 #include <ecore/EPackage.hpp>
@@ -25,12 +26,9 @@
 #include <ecore/EObject.hpp>
 
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/classification.hpp>
 
 #include <vector>
 #include <string>
-#include <set>
 
 typedef std::vector< ::ecore::EObject_ptr > PROVIDER_LIST;
 
@@ -61,7 +59,7 @@ extern "C" EXPORT_NEVONEX_DLL PROVIDER_LIST & getProviders(void)
     if (providers.empty())
     {
         {
-            EObject_ptr _obj = getNevonexPackageClass("GPSPluginProvider");
+            EObject_ptr _obj = getNevonexPackageClass("GPS_TCProvider");
             if (_obj && ::ecore::as< ::nevonex::types::IMachineProvider >(_obj))
             {
                 providers.push_back(_obj);
@@ -109,35 +107,9 @@ typedef std::vector< ::ecore::EObject_ptr > PLATFORM_SERVICE_PROVIDER_LIST;
 extern "C" EXPORT_NEVONEX_DLL PLATFORM_SERVICE_PROVIDER_LIST & getCloudDownloadInstance(void)
 {
     static PLATFORM_SERVICE_PROVIDER_LIST platformServiceProviders;
-    static bool platformServiceProvidersInitialized = false;
-    if (platformServiceProvidersInitialized)
-    {
-        return platformServiceProviders;
-    }
-    using namespace ::nevonex;
-
-    platformServiceProviders.clear();
-
-    std::set<std::string> platformServicesSet;
-    for (common::PlatformServicesEnum e : common::PlatformServicesEnum_Values)
-    {
-        std::vector<std::string> splitted;
-        boost::split(splitted, common::getLiteral(e), boost::is_any_of("_"));
-        if (!splitted.empty())
-        {
-            platformServicesSet.emplace(splitted.at(0));
-        }
-    }
-
-    for (auto platformServiceClassName : platformServicesSet)
-    {
-        ::ecore::EObject_ptr eObj = getNevonexPackageClass(platformServiceClassName);
-        if (eObj != nullptr)
-        {
-            platformServiceProviders.push_back(eObj);
-        }
-    }
-
-    platformServiceProvidersInitialized = true;
+    /*PROTECTED REGION ID(nevonex_getCloudDownloadInstance) START*/
+    // Please, enable the protected region if you add manually written code.
+    // To do this, add the keyword ENABLED before START.
+    /*PROTECTED REGION END*/
     return platformServiceProviders;
 }

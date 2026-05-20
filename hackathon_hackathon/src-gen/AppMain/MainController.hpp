@@ -10,9 +10,10 @@
 
 #include <AppMain_forward.hpp>
 
-#include <nevonex/gpsplugin_forward.hpp>
+#include <nevonex/gps_tc_forward.hpp>
 #include <nevonex/implement_forward.hpp>
 #include <nevonex/isopgn_forward.hpp>
+#include <nevonex/platform_service_forward.hpp>
 #include <AppMain/ApplicationInputData.hpp>
 #include <AppMain/IController.hpp>
 
@@ -26,11 +27,13 @@ using namespace ::nevonex::fcal;
 using namespace ::nevonex::common;
 using namespace ::nevonex::types;
 
-using namespace ::nevonex::gpsplugin;
+using namespace ::nevonex::gps_tc;
 
 using namespace ::nevonex::implement;
 
 using namespace ::nevonex::isopgn;
+
+using namespace ::nevonex::platform_service;
 
 /*PROTECTED REGION ID(MainController_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -25,9 +25,10 @@
 
 using namespace ::ecore;
 using namespace ::nevonex::machine;
-using namespace ::nevonex::gpsplugin;
+using namespace ::nevonex::gps_tc;
 using namespace ::nevonex::implement;
 using namespace ::nevonex::isopgn;
+using namespace ::nevonex::platform_service;
 
 using namespace ::AppMain;
 using namespace ::nevonex::log;

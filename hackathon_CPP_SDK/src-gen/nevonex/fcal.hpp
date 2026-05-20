@@ -14,7 +14,7 @@
 
 // EClass
 #include "fcal/BulkProcessor.hpp"
-#include "fcal/INTERNAL_GPS_DETAILEDINFO_R.hpp"
+#include "fcal/GPS_INFO_R.hpp"
 
 // EEnum
 

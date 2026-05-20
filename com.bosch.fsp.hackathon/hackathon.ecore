@@ -6,7 +6,7 @@
   </eAnnotations>
   <eSubpackages name="common" nsURI="com.bosch.nevonex.common" nsPrefix="common">
     <eClassifiers xsi:type="ecore:EEnum" name="ProviderEnum">
-      <eLiterals name="GPSPluginProvider" literal="GPSPluginProvider"/>
+      <eLiterals name="GPS_TCProvider" literal="GPS_TCProvider"/>
       <eLiterals name="ImplementProvider" value="1" literal="ImplementProvider"/>
       <eLiterals name="ISOPGNProvider" value="2" literal="ISOPGNProvider"/>
     </eClassifiers>
@@ -104,10 +104,10 @@
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IFcalFactory" abstract="true" interface="true"/>
-<eClassifiers xsi:type="ecore:EClass" name="INTERNAL_GPS_DETAILEDINFO_R" eSuperTypes="#//types/IArrayType">
+<eClassifiers xsi:type="ecore:EClass" name="GPS_INFO_R" eSuperTypes="#//types/IArrayType">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Latitude -> Latitude is the angular distance of a place North or South of the earth's equator, range:[-90, +90]&#xA;&#xA;Longitude -> Longitude is the angular distance of a place East or West of the meridian, range:[-180, +180]&#xA;&#xA;Altitude -> How high or low the device/location is relation to the sea level&#xA;&#xA;TimeStamp -> Epoch time when the GPS data transmitted from satellite&#x9;&#xA;&#xA;HorizontalAccuracy -> Measure of how close a reported position is accurate on earth surface&#x9;&#xA;&#xA;VerticalAccuracy -> Measure of how close a reported position is accurate to sea level&#xA;&#xA;HorizontalDil -> Horizontal Dilution of precision, range:[1, infinity]&#xA;&#xA;PositionDil -> Position Dilution of Precision, range:[1, infinity] (RCU target doest not provide PDOP, set to default value -99.999)&#xA;&#xA;VerticalDil -> Vertical Dilution of Precision, range:[1, infinity]&#xA;&#xA;TimeDil -> Time Dilution of Precision, range:[1, infinity]&#xA;&#xA;Speed -> Speed of the GPS device&#xA;&#xA;Course -> Direction in which the device is heading to, range:[0, 359.99]&#xA;&#xA;NumberOfSatellites -> Number of satellites used in determining GPS fix"/>
-        <details key="arrayfeatures" value="latitude,longitude,altitude,timeStamp,horizontalAccuracy,verticalAccuracy,horizontalDil,positionDil,verticalDil,timeDil,speed,course,numberOfSatellites"/>
+        <details key="documentation" value="This Structure provides GPS signal quality"/>
+        <details key="arrayfeatures" value="latitude,longitude,altitude,positionTime,hDOP,pDOP,numberOfSattelites"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
           defaultValueLiteral="0.0">
@@ -127,61 +127,25 @@
           <details key="access" value="Read"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeStamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="access" value="Read"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="horizontalAccuracy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="hDOP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
           defaultValueLiteral="0.0f">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="access" value="Read"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalAccuracy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="pDOP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
           defaultValueLiteral="0.0f">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="access" value="Read"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="horizontalDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-          defaultValueLiteral="0.0f">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="access" value="Read"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-          defaultValueLiteral="0.0f">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="access" value="Read"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-          defaultValueLiteral="0.0f">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="access" value="Read"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeDil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-          defaultValueLiteral="0.0f">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="access" value="Read"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-          defaultValueLiteral="0.0f">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="access" value="Read"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="course" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
-          defaultValueLiteral="0.0f">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="access" value="Read"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSatellites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSattelites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
           defaultValueLiteral="0">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="access" value="Read"/>
@@ -430,42 +394,47 @@
       </eOperations>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="gpsplugin" nsURI="com.bosch.nevonex.gpsplugin" nsPrefix="gpsplugin">
-    <eClassifiers xsi:type="ecore:EClass" name="IGPSPlugin" abstract="true" interface="true">
+  <eSubpackages name="gps_tc" nsURI="com.bosch.nevonex.gps_tc" nsPrefix="gps_tc">
+    <eClassifiers xsi:type="ecore:EClass" name="IGPS_TC" abstract="true" interface="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="role" value="Machine"/>
-        <details key="containedIn" value="GPSPluginProvider"/>
+        <details key="containedIn" value="GPS_TCProvider"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="gPSSensorPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="active_TC_GPS_source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="interfaceDetails" value="fek/1984;"/>
+          <details key="interfaceDetails" value="fek/3954;"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="internalGpsDetailedInfo" eType="#//fcal/INTERNAL_GPS_DETAILEDINFO_R">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionofGpsSensor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="interfaceDetails" value="fek/9288;"/>
+          <details key="interfaceDetails" value="fek/123;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tcGpsInfo" eType="#//fcal/GPS_INFO_R">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/3904;"/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="GPSPlugin" eSuperTypes="#//common/TopicObject">
+    <eClassifiers xsi:type="ecore:EClass" name="GPS_TC" eSuperTypes="#//common/TopicObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="role" value="Machine"/>
-        <details key="interfaceDetails" value="fek/1984;fek/9288;"/>
-        <details key="interfaceDetailsType" value="1984/GPS_TYPE/GPSSensorPosition;9288/ARRAY_TYPE/INTERNAL_GPS_DETAILEDINFO_R;"/>
+        <details key="interfaceDetails" value="fek/3954;fek/123;fek/3904;"/>
+        <details key="interfaceDetailsType" value="3954/ENUM_TYPE/Active_TC_GPS_source;123/GPS_TYPE/PositionofGpsSensor;3904/ARRAY_TYPE/GPS_INFO_R;"/>
       </eAnnotations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="IGPSPluginProvider" abstract="true" interface="true">
+    <eClassifiers xsi:type="ecore:EClass" name="IGPS_TCProvider" abstract="true" interface="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="role" value="MachineProvider"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="gPSPlugin" eType="#//gpsplugin/IGPSPlugin" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="gPS_TC" eType="#//gps_tc/IGPS_TC" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="GPSPluginProvider">
+    <eClassifiers xsi:type="ecore:EClass" name="GPS_TCProvider">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="role" value="MachineProvider"/>
       </eAnnotations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="IGpspluginFactory" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IGps_tcFactory" abstract="true" interface="true"/>
   </eSubpackages>
   <eSubpackages name="implement" nsURI="com.bosch.nevonex.implement" nsPrefix="implement">
     <eClassifiers xsi:type="ecore:EClass" name="IImplement" abstract="true" interface="true">
@@ -591,9 +560,66 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IIsopgnFactory" abstract="true" interface="true"/>
   </eSubpackages>
+  <eSubpackages name="platform_service" nsURI="com.bosch.nevonex.platform_service" nsPrefix="platform_service">
+    <eClassifiers xsi:type="ecore:EClass" name="IPlatform_Service" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="containedIn" value="Platform_ServiceProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="download" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/0;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="uploadData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/0;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="uploadFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/0;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="receive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/0;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sendCommand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/0;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sendFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="interfaceDetails" value="fek/0;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Platform_Service" eSuperTypes="#//common/TopicObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="Machine"/>
+        <details key="interfaceDetails" value="fek/0;fek/0;fek/0;fek/0;fek/0;fek/0;"/>
+        <details key="interfaceDetailsType" value="0/UNKNOWN_TYPE/Download;0/UNKNOWN_TYPE/UploadData;0/UNKNOWN_TYPE/UploadFile;0/UNKNOWN_TYPE/Receive;0/UNKNOWN_TYPE/SendCommand;0/UNKNOWN_TYPE/SendFile;"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IPlatform_ServiceProvider" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="platform_Service" eType="#//platform_service/IPlatform_Service" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Platform_ServiceProvider">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="role" value="MachineProvider"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IPlatform_serviceFactory" abstract="true" interface="true"/>
+  </eSubpackages>
   <eSubpackages name="main" nsURI="com.bosch.nevonex.main" nsPrefix="main">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="Provider" value="GPSPlugin provider:gpsplugin,Implement provider:implement,ISOPGN provider:isopgn"/>
+      <details key="Provider" value="GPS_TC provider:gps_tc,Implement provider:implement,ISOPGN provider:isopgn,Platform_Service provider:platform_service"/>
       <details key="AppControllerName" value="MainController"/>
       <details key="Timer" value="1000"/>
       <details key="isCustomUI" value="true"/>
@@ -627,7 +653,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Runnable" instanceClassName="java.lang.Runnable"
         abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="ApplicationInputData">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="gPSPlugin" eType="#//main/GPSPlugin"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="gPS_TC" eType="#//main/GPS_TC"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="implement" eType="#//main/Implement"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="iSOPGN" eType="#//main/ISOPGN"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="platform_Service" eType="#//main/Platform_Service"/>
@@ -654,7 +680,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="controller" eType="#//main/MainController"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UIWebsocketEndPoint"/>
-    <eClassifiers xsi:type="ecore:EClass" name="GPSPlugin"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GPS_TC"/>
     <eClassifiers xsi:type="ecore:EClass" name="Implement"/>
     <eClassifiers xsi:type="ecore:EClass" name="ISOPGN"/>
     <eClassifiers xsi:type="ecore:EClass" name="Platform_Service"/>

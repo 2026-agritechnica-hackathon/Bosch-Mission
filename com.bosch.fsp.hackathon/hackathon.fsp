@@ -1,3 +1,4 @@
-GPSPluginProvider=com.bosch.nevonex.gpsplugin.impl.GPSPluginProvider
+GPS_TCProvider=com.bosch.nevonex.gps_tc.impl.GPS_TCProvider
 ImplementProvider=com.bosch.nevonex.implement.impl.ImplementProvider
 ISOPGNProvider=com.bosch.nevonex.isopgn.impl.ISOPGNProvider
+Platform_ServiceProvider=com.bosch.nevonex.platform_service.impl.Platform_ServiceProvider

@@ -49,7 +49,7 @@ public class UpdateTask extends TimerTask {
 			DocumentBuilder buider = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Document document = buider.parse(file);
 			List<String> machines = new ArrayList<>();
-			machinePath.put("GPSPlugin", "GPSPlugin");
+			machinePath.put("GPS_TC", "GPS_TC");
 			machinePath.put("Implement", "Implement");
 			machinePath.put("ISOPGN", "ISOPGN");
          machines.addAll(machinePath.keySet());
@@ -78,7 +78,7 @@ public class UpdateTask extends TimerTask {
     @Override
     public void run() {
         try {
-            String []  interfaceArray = {"GPSPlugin/1984", "GPSPlugin/9288", "Implement/350", "ISOPGN/215", "ISOPGN/306", "ISOPGN/9336", "ISOPGN/294", "ISOPGN/224", "ISOPGN/273", "ISOPGN/314", "ISOPGN/9173", "ISOPGN/267", "ISOPGN/8744", "ISOPGN/8746", "ISOPGN/276", "ISOPGN/263"};
+            String []  interfaceArray = {"GPS_TC/3954", "GPS_TC/123", "GPS_TC/3904", "Implement/350", "ISOPGN/215", "ISOPGN/306", "ISOPGN/9336", "ISOPGN/294", "ISOPGN/224", "ISOPGN/273", "ISOPGN/314", "ISOPGN/9173", "ISOPGN/267", "ISOPGN/8744", "ISOPGN/8746", "ISOPGN/276", "ISOPGN/263"};
     			for (String interfaceAddress : interfaceArray) {
 					String name = interfaceAddress.split("/")[0];
 					String address = "/" + interfaceAddress.split("/")[1];

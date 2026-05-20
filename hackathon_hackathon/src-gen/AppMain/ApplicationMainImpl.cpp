@@ -65,7 +65,7 @@ using namespace ::nevonex;
 using namespace ::nevonex::fcal;
 using namespace ::nevonex::common;
 using namespace ::nevonex::types;
-using namespace ::nevonex::gpsplugin;
+using namespace ::nevonex::gps_tc;
 using namespace ::nevonex::implement;
 using namespace ::nevonex::isopgn;
 
@@ -159,7 +159,7 @@ int main()
         std::vector < std::string > vec;
 
         vec.push_back(
-                common::getLiteral(ProviderEnum::GPSPluginProvider));
+                common::getLiteral(ProviderEnum::GPS_TCProvider));
 
         vec.push_back(
                 common::getLiteral(ProviderEnum::ImplementProvider));
@@ -223,15 +223,15 @@ void ApplicationMain::onStart(::nevonex::feature::AbstractMachine_ptr machine)
 // To do this, add the keyword ENABLED before START.
 /*PROTECTED REGION END*/
 
-    if (GPSPlugin_ptr gPSPlugin =
-            ::ecore::as < GPSPlugin > (machine))
+    if (GPS_TC_ptr gPS_TC =
+            ::ecore::as < GPS_TC > (machine))
     {
         MachineConnectListener *machineListener = new MachineConnectListener();
         machineListener->setMainController(getMainController());
-        gPSPlugin->addListeners(machineListener);
+        gPS_TC->addListeners(machineListener);
 
         // Machine has started. Check for Type and Index.
-        /*PROTECTED REGION ID(GPSPluginProviderGPSPlugin_onStart) START*/
+        /*PROTECTED REGION ID(GPS_TCProviderGPS_TC_onStart) START*/
 // Please, enable the protected region if you add manually written code.
 // To do this, add the keyword ENABLED before START.
 /*PROTECTED REGION END*/
@@ -279,12 +279,12 @@ bool ApplicationMain::onStart(
 // To do this, add the keyword ENABLED before START.
 /*PROTECTED REGION END*/
 
-    if (GPSPluginProvider_ptr gPSPluginProvider =
-            ::ecore::as < GPSPluginProvider > (provider))
+    if (GPS_TCProvider_ptr gPS_TCProvider =
+            ::ecore::as < GPS_TCProvider > (provider))
     {
-        m_mainController->setGPSPluginProvider(
-                gPSPluginProvider);
-        /*PROTECTED REGION ID(GPSPluginProvider_onStart) START*/
+        m_mainController->setGPS_TCProvider(
+                gPS_TCProvider);
+        /*PROTECTED REGION ID(GPS_TCProvider_onStart) START*/
 // Please, enable the protected region if you add manually written code.
 // To do this, add the keyword ENABLED before START.
 /*PROTECTED REGION END*/

@@ -178,9 +178,9 @@ void CommonPackage::_initPackage()
     m_ProviderEnumEEnum->setSerializable(true);
 
     {
-        // GPSPluginProvider
+        // GPS_TCProvider
         ::ecore::EEnumLiteral_ptr _el = addEEnumLiteral(
-                m_ProviderEnumEEnum, "GPSPluginProvider", 0, "GPSPluginProvider");
+                m_ProviderEnumEEnum, "GPS_TCProvider", 0, "GPS_TCProvider");
     }
 
     {

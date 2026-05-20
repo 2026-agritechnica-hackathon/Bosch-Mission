@@ -1,5 +1,5 @@
 {"machine_path": {
-  "GPSPlugin": "GPSPlugin",
+  "GPS_TC": "GPS_TC",
   "Implement": "Implement",
   "ISOPGN": "ISOPGN",
   "Platform_Service": "Platform_Service"

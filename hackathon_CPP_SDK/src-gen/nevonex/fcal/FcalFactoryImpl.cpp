@@ -6,7 +6,7 @@
 #include <nevonex/fcal/FcalFactory.hpp>
 #include <nevonex/fcal/FcalPackage.hpp>
 #include <nevonex/fcal/BulkProcessor.hpp>
-#include <nevonex/fcal/INTERNAL_GPS_DETAILEDINFO_R.hpp>
+#include <nevonex/fcal/GPS_INFO_R.hpp>
 
 #include <ecore.hpp>
 #include <ecorecpp/mapping.hpp>
@@ -23,8 +23,8 @@ FcalFactory::FcalFactory()
     {
     case FcalPackage::BULKPROCESSOR:
         return createBulkProcessor();
-    case FcalPackage::INTERNAL_GPS_DETAILEDINFO_R:
-        return createINTERNAL_GPS_DETAILEDINFO_R();
+    case FcalPackage::GPS_INFO_R:
+        return createGPS_INFO_R();
     default:
         throw "IllegalArgumentException";
     }
@@ -58,7 +58,7 @@ BulkProcessor_ptr FcalFactory::createBulkProcessor()
 {
     return ::ecore::Ptr < BulkProcessor > (new BulkProcessor);
 }
-INTERNAL_GPS_DETAILEDINFO_R_ptr FcalFactory::createINTERNAL_GPS_DETAILEDINFO_R()
+GPS_INFO_R_ptr FcalFactory::createGPS_INFO_R()
 {
-    return ::ecore::Ptr < INTERNAL_GPS_DETAILEDINFO_R > (new INTERNAL_GPS_DETAILEDINFO_R);
+    return ::ecore::Ptr < GPS_INFO_R > (new GPS_INFO_R);
 }

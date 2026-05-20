@@ -11,7 +11,7 @@
 
 #include <AppMain_forward.hpp>
 
-#include <nevonex/gpsplugin_forward.hpp>
+#include <nevonex/gps_tc_forward.hpp>
 #include <nevonex/implement_forward.hpp>
 #include <nevonex/isopgn_forward.hpp>
 
@@ -43,13 +43,13 @@ namespace AppMain
          * \brief 
          */
     public:
-        virtual ::nevonex::gpsplugin::GPSPluginProvider_ptr getGPSPluginProvider() const;
+        virtual ::nevonex::gps_tc::GPS_TCProvider_ptr getGPS_TCProvider() const;
         /**
          * \brief 
          */
     public:
-        virtual void setGPSPluginProvider(
-                ::nevonex::gpsplugin::GPSPluginProvider_ptr _gPSPluginProvider);
+        virtual void setGPS_TCProvider(
+                ::nevonex::gps_tc::GPS_TCProvider_ptr _gPS_TCProvider);
 
         /**
          * \brief 
@@ -98,7 +98,7 @@ namespace AppMain
 
         // References
 
-        ::nevonex::gpsplugin::GPSPluginProvider_ptr m_gPSPluginProvider;
+        ::nevonex::gps_tc::GPS_TCProvider_ptr m_gPS_TCProvider;
 
         ::nevonex::implement::ImplementProvider_ptr m_implementProvider;
 

@@ -11,6 +11,6 @@ public interface IFcalFactory {
 
 	IBulkProcessor createBulkProcessor();
 
-	IINTERNAL_GPS_DETAILEDINFO_R createINTERNAL_GPS_DETAILEDINFO_R();
+	IGPS_INFO_R createGPS_INFO_R();
 
 } //IFcalFactory
